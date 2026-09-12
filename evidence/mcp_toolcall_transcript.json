@@ -1,6 +1,6 @@
 {
-  "description": "AC-10 evidence: agent invoking MCP tools via langchain-mcp-adapters. Tool results are PII-redacted for the committed log (NFR-05).",
-  "generated_at": "2026-09-12T13:36:57",
+  "description": "AC-10: agent invoking custom MCP tools via langchain-mcp-adapters (results PII-redacted, NFR-05).",
+  "generated_at": "2026-09-12T13:55:00",
   "loaded_tools": [
     "patient_lookup",
     "appointment_slots",
@@ -35,33 +35,28 @@
       ]
     },
     {
-      "tool": "appointment_slots",
+      "tool": "care_pathway",
       "server": "clinic",
       "arguments": {
-        "specialty": "cardiology",
-        "urgency": "emergent"
+        "condition": "chest_pain"
       },
       "result_redacted": [
         {
-          "slot_id": "SLOT-0013",
+          "condition": "chest_pain",
+          "default_urgency": "emergent",
           "specialty": "cardiology",
-          "urgency_band": "emergent",
-          "provider": "Dr. Synthetic Cardiology",
-          "when": "2026-09-12T09:00:00"
-        },
-        {
-          "slot_id": "SLOT-0014",
-          "specialty": "cardiology",
-          "urgency_band": "emergent",
-          "provider": "Dr. Synthetic Cardiology",
-          "when": "2026-09-12T13:00:00"
-        },
-        {
-          "slot_id": "SLOT-0015",
-          "specialty": "cardiology",
-          "urgency_band": "emergent",
-          "provider": "Dr. Synthetic Cardiology",
-          "when": "2026-09-12T16:00:00"
+          "steps": [
+            "Screen for emergency red flags (crushing pain, radiation to arm/jaw, dyspnea, diaphoresis).",
+            "If red flags present, direct to emergency care immediately \u2014 do NOT schedule routine.",
+            "If no red flags, expedite cardiology evaluation within 24 hours.",
+            "Arrange follow-up ECG review and medication reconciliation."
+          ],
+          "red_flags": [
+            "radiation to arm or jaw",
+            "shortness of breath",
+            "sweating",
+            "syncope"
+          ]
         }
       ]
     }

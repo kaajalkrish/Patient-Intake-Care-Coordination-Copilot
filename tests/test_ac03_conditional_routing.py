@@ -7,12 +7,12 @@ from src.schemas import TriageResult, Urgency
 from src.state import new_state
 
 
-def _state_with_triage(urgency: str, specialty: str, done=None):
+def _state_with_triage(urgency: str, specialty: str, done=None, out_of_scope=False):
     st = new_state(patient_id="SYN-1001", session_id="s", thread_id="t",
                    quarantined_input={"raw": "", "sanitized": "", "injection_flagged": False})
     st["triage_result"] = TriageResult(
         urgency=Urgency(urgency), chief_complaint="x", recommended_disposition="y",
-        specialty=specialty)
+        specialty=specialty, out_of_scope=out_of_scope)
     st["urgency"] = urgency
     st["completed_workers"] = done or ["triage"]
     return st
@@ -37,9 +37,10 @@ def test_self_care_skips_scheduling():
         final["scheduling_result"].appointment_recommended is False
 
 
-def test_out_of_scope_specialty_triggers_referral():
-    # A specialty outside the clinic's scope must be referred out.
-    st = _state_with_triage("routine", "neurosurgery", done=["triage", "scheduling"])
+def test_out_of_scope_need_triggers_referral():
+    # An out-of-scope need (flagged by triage) must be referred out.
+    st = _state_with_triage("routine", "general_practice", done=["triage", "scheduling"],
+                            out_of_scope=True)
     decision = decide_next(st)
     assert decision.next_worker == "referral"
 

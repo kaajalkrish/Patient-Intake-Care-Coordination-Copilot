@@ -1,9 +1,9 @@
 {
   "run_kind": "agentic_rag_trace",
   "meta": {
-    "mode": "offline_deterministic_fallback"
+    "mode": "gemini_llm"
   },
-  "duration_s": 0.3437,
+  "duration_s": 12.4026,
   "event_count": 7,
   "events": [
     {
@@ -12,7 +12,7 @@
       "name": "[REDACTED]"
     },
     {
-      "t": 0.3191,
+      "t": 0.3635,
       "kind": "rag_decision",
       "agent": "triage",
       "condition": "chest_pain",
@@ -21,29 +21,29 @@
       "hits": 3
     },
     {
-      "t": 0.3201,
+      "t": 5.5983,
       "kind": "triage_result",
-      "source": "heuristic",
+      "source": "llm",
       "urgency": "emergent",
       "specialty": "cardiology",
-      "confidence": 0.6
+      "confidence": 1.0
     },
     {
-      "t": 0.3201,
+      "t": 5.5983,
       "kind": "case",
       "name": "[REDACTED]"
     },
     {
-      "t": 0.3201,
+      "t": 7.9896,
       "kind": "rag_decision",
       "agent": "triage",
       "condition": "cold_symptoms",
-      "retrieve": false,
-      "method": "heuristic",
-      "hits": 0
+      "retrieve": true,
+      "method": "llm",
+      "hits": 3
     },
     {
-      "t": 0.3211,
+      "t": 12.3856,
       "kind": "triage_result",
       "source": "heuristic",
       "urgency": "self_care",
@@ -51,7 +51,7 @@
       "confidence": 0.6
     },
     {
-      "t": 0.3423,
+      "t": 12.4026,
       "kind": "rag_retrieval_sample",
       "query": "mental health self-harm triage",
       "passages": [

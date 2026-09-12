@@ -18,11 +18,12 @@ def referral_agent(state: PatientIntakeState, trace: Trace | None = None) -> dic
     triage: TriageResult | None = state.get("triage_result")
     specialty = triage.specialty if triage else "general_practice"
 
-    out_of_scope = specialty not in IN_SCOPE_SPECIALTIES
+    # Out-of-scope is signalled explicitly by triage (specialty itself is always in-scope).
+    out_of_scope = bool(triage and triage.out_of_scope) or specialty not in IN_SCOPE_SPECIALTIES
     if out_of_scope:
         result = ReferralResult(
-            referral_needed=True, referred_specialty=specialty, out_of_scope=True,
-            reason=f"'{specialty}' is outside clinic scope; refer to an external specialist.",
+            referral_needed=True, referred_specialty="external specialist", out_of_scope=True,
+            reason="Presenting need is outside clinic scope; refer to an external specialist.",
         )
     elif specialty in _GP_HANDLED:
         result = ReferralResult(

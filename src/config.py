@@ -30,7 +30,7 @@ def _int(name: str, default: int) -> int:
 class Settings:
     # LLM
     google_api_key: str | None = os.getenv("GOOGLE_API_KEY")
-    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
     gemini_embedding_model: str = os.getenv("GEMINI_EMBEDDING_MODEL", "models/text-embedding-004")
     llm_timeout_seconds: int = _int("LLM_TIMEOUT_SECONDS", 30)
     llm_max_retries: int = _int("LLM_MAX_RETRIES", 2)

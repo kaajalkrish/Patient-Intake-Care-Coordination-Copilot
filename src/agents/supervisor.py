@@ -25,11 +25,10 @@ WORKERS = ("triage", "scheduling", "referral", "followup")
 def _needs_referral(triage: TriageResult | None) -> bool:
     if triage is None:
         return False
-    spec = triage.specialty
-    # Out of scope OR an in-scope specialty other than general practice needs a referral.
-    if spec not in IN_SCOPE_SPECIALTIES:
+    # Out of scope (explicit flag) OR an in-scope specialty other than general practice.
+    if triage.out_of_scope or triage.specialty not in IN_SCOPE_SPECIALTIES:
         return True
-    return spec != "general_practice"
+    return triage.specialty != "general_practice"
 
 
 def decide_next(state: PatientIntakeState) -> SupervisorDecision:
