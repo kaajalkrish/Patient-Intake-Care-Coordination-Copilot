@@ -1,0 +1,36 @@
+# Secrets — NEVER commit (NFR-01)
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local runtime state (checkpointers, vector stores) — NOT evidence
+*.sqlite
+*.sqlite3
+*.db
+checkpoints/
+.chroma/
+chroma_db/
+data/vectorstore/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Keep committed evidence, sample inputs, and synthetic data
+!evidence/
+!data/sample_intakes/
+!data/synthetic/

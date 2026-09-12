@@ -1,0 +1,29 @@
+# ── Core agent framework ────────────────────────────────────────────────
+langgraph>=0.2.60
+langgraph-checkpoint-sqlite>=2.0.0
+langchain>=0.3.0
+langchain-core>=0.3.0
+
+# ── LLM provider: Google Gemini (only approved provider) ────────────────
+langchain-google-genai>=2.0.0
+google-genai>=0.3.0
+
+# ── MCP interoperability ────────────────────────────────────────────────
+mcp>=1.2.0
+langchain-mcp-adapters>=0.1.0
+
+# ── Memory: semantic store + embeddings ─────────────────────────────────
+chromadb>=0.5.0
+sentence-transformers>=3.0.0
+langmem>=0.0.10
+
+# ── Data / validation ───────────────────────────────────────────────────
+pydantic>=2.7.0
+python-dotenv>=1.0.1
+
+# ── Optional UI ─────────────────────────────────────────────────────────
+streamlit>=1.38.0
+
+# ── Testing ─────────────────────────────────────────────────────────────
+pytest>=8.2.0
+pytest-asyncio>=0.23.0
