@@ -1,0 +1,26 @@
+{
+  "description": "Official `ragas` evaluation of the agentic-RAG tool, run from the isolated .venv-ragas (ragas is incompatible with the project's pinned langchain 1.x stack, so it lives in its own venv). Judge LLM: Google Gemini; embeddings: local Sentence-Transformers all-MiniLM-L6-v2.",
+  "status": "verified_working_partial",
+  "ragas_version": "0.2.15",
+  "judge_model": "gemini-3.6-flash",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2 (local)",
+  "verified_partial_run": {
+    "n_items": 2,
+    "note": "Real ragas output observed on a 2-item run. answer_relevancy was not captured in this run because the Gemini embedding model 404'd; the runner was subsequently switched to local Sentence-Transformers embeddings, so a full re-run captures all four metrics.",
+    "aggregate": {
+      "llm_context_precision_with_reference": 1.0,
+      "context_recall": 0.5,
+      "faithfulness": 1.0,
+      "answer_relevancy": null
+    }
+  },
+  "full_run_blocker": {
+    "reason": "Google Gemini free-tier quota is 20 generate-requests/day PER MODEL (GenerateRequestsPerDayPerProjectPerModel-FreeTier). A full 5-item x 4-metric ragas run needs dozens of judge calls; the day's quota across gemini-3.5/3.6/3.8-flash was exhausted during app runs, evidence capture and eval attempts.",
+    "remedies": [
+      "Re-run after the daily quota resets (00:00 Pacific): .venv-ragas/Scripts/python.exe scripts/run_official_ragas.py",
+      "Use a paid/higher-quota Gemini key or project.",
+      "The self-contained RAGAS-style evaluator (evidence/ragas_report.json) gives full, reproducible metrics with no LLM quota dependency."
+    ]
+  },
+  "reproduce": "RAGAS_JUDGE_MODEL=gemini-3.6-flash .venv-ragas/Scripts/python.exe scripts/run_official_ragas.py"
+}
