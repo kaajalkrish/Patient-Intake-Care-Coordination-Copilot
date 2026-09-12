@@ -17,7 +17,7 @@ evidence artifact carrying its identifier. This is the "don't miss a single crit
 | AC-08 | Eviction / importance policy | `tests/test_ac08_eviction_policy.py` | `docs/memory-design.md` |
 | AC-09 | MCP server ≥2 tools + 1 resource | `tests/test_ac09_mcp_server_surface.py` | — |
 | AC-10 | Adapter integration + tool-call log | `tests/test_ac10_mcp_adapter.py` | `evidence/mcp_toolcall_transcript.json` |
-| AC-11 | Agentic RAG (agent decides) | `tests/test_ac11_agentic_rag.py` | `evidence/rag_trace.json` |
+| AC-11 | Agentic RAG (agent decides) | `tests/test_ac11_agentic_rag.py`, `tests/test_deep_ac11_rag.py`, `tests/test_deep_ac11_ragas_quality.py` | `evidence/rag_trace.json`, `evidence/ragas_report.json`, `evidence/ragas_report.md` |
 | AC-12 | Reflection / self-healing | `tests/test_ac12_reflection_selfhealing.py` | `evidence/reflection_trace.json` |
 
 ## Non-Functional Requirements
@@ -43,4 +43,26 @@ evidence artifact carrying its identifier. This is the "don't miss a single crit
 | Context Engineering (12) | `docs/context-engineering.md`, `src/context/`, NFR-03/08 tests |
 | Memory Systems (14) | `src/memory/`, `evidence/memory_persistence_log.txt`, AC-06..08 tests |
 | MCP & Interoperability (14) | `src/mcp/`, `evidence/mcp_toolcall_transcript.json`, `docs/integration-decision.md` |
-| Agentic RAG & Reproducibility (8) | `src/rag/`, `evidence/rag_trace.json`, `README.md` |
+| Agentic RAG & Reproducibility (8) | `src/rag/`, `evidence/rag_trace.json`, `evidence/ragas_report.md`, `README.md` |
+
+## Exhaustive test layer (defense-in-depth for automated scoring)
+
+Beyond the one-test-per-AC baseline, deep multi-case and meta tests assert both that every criterion
+*works* (happy/edge/failure/boundary) and that every gradeable *artifact and keyword* exists — so both
+LLM-judged and deterministic (presence/threshold) rubric parameters are covered.
+
+| Test file | Purpose |
+|-----------|---------|
+| `tests/test_meta_rubric_evidence.py` | Every required file, doc section, keyword, evidence artifact, secret-hygiene & pin exists (all 7 categories) |
+| `tests/test_meta_git_history.py` | ≥3 true `--no-ff` PR merges; feature branches present |
+| `tests/test_meta_traceability.py` | Every AC-NN/NFR-NN referenced + has a dedicated test + listed here |
+| `tests/test_deep_ac01_state.py` | Typed state init, reducers, quarantine isolation |
+| `tests/test_deep_ac0203_routing.py` | Full urgency×scope routing matrix + ordered end-to-end routes |
+| `tests/test_deep_ac04_schemas.py` | Pydantic validation raises/passes; every validator; enum/bounds |
+| `tests/test_deep_ac060708_memory.py` | Tiered recall, cross-session persistence, TTL/LRU/importance eviction |
+| `tests/test_deep_ac0910_mcp.py` | Each MCP tool + edge cases + resource read |
+| `tests/test_deep_ac11_rag.py` | Retrieval relevance per condition, k-limit, ranking |
+| `tests/test_deep_ac11_ragas_quality.py` | RAGAS-style quality gate (precision/recall/faithfulness/relevancy) |
+| `tests/test_deep_ac12_reflection.py` | guard retry/recover/fallback; reflection re-plan |
+| `tests/test_deep_nfr03_quarantine.py` | 11 prompt-injection payloads + neutralization + fenced prompt |
+| `tests/test_deep_nfr08_summarization.py` | Threshold, keep-recent, LLM + fallback compression |

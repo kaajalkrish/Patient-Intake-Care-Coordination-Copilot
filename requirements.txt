@@ -9,7 +9,7 @@ langchain-google-genai>=2.0.0
 google-genai>=0.3.0
 
 # ── MCP interoperability ────────────────────────────────────────────────
-mcp>=1.2.0
+mcp>=1.2.0,<2
 langchain-mcp-adapters>=0.1.0
 
 # ── Memory: semantic store + embeddings ─────────────────────────────────

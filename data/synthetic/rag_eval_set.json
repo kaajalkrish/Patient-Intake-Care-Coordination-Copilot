@@ -1,0 +1,35 @@
+{
+  "description": "Synthetic evaluation set for the agentic-RAG care-pathway/triage-guideline tool. Each item pairs a coordination question with the guideline source that should be retrieved and a synthetic ground-truth answer. Used by scripts/run_ragas_eval.py to compute RAGAS-style metrics. All content is synthetic (Synthetic-Data Rule); this is coordination guidance, not medical advice.",
+  "items": [
+    {
+      "id": "eval-chest-pain",
+      "question": "How should a patient reporting crushing chest pain radiating to the left arm be triaged?",
+      "expected_source": "care_pathway_chest_pain.md",
+      "ground_truth": "Chest pain with radiation to the arm, sweating or shortness of breath is an emergent red flag; direct the patient to emergency care immediately and expedite scheduling. Route to cardiology."
+    },
+    {
+      "id": "eval-mental-health",
+      "question": "What is the coordination pathway when a patient reports feeling hopeless with thoughts of self-harm?",
+      "expected_source": "care_pathway_mental_health.md",
+      "ground_truth": "Reports of self-harm or hopelessness are urgent; escalate for same-day mental-health assessment and route to the mental_health specialty with prompt follow-up."
+    },
+    {
+      "id": "eval-dermatology",
+      "question": "How is a routine itchy skin rash handled for scheduling and referral?",
+      "expected_source": "care_pathway_dermatology.md",
+      "ground_truth": "A non-urgent itchy rash is routine; schedule a standard dermatology appointment and provide self-care guidance while awaiting the visit."
+    },
+    {
+      "id": "eval-urgency-bands",
+      "question": "What urgency bands does the triage guideline define and what do they mean?",
+      "expected_source": "triage_guideline_urgency.md",
+      "ground_truth": "The guideline defines emergent (direct to emergency care), urgent (same or next day), routine (standard scheduling), and self_care (education, no appointment needed)."
+    },
+    {
+      "id": "eval-referral-scope",
+      "question": "When must a presenting need be referred outside the clinic's scope?",
+      "expected_source": "referral_scope.md",
+      "ground_truth": "Needs outside the clinic's specialties, such as oncology, neurosurgery or transplant care, are out of scope and must be referred out to an external specialist."
+    }
+  ]
+}

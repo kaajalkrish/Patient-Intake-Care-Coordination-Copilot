@@ -3,7 +3,7 @@
   "meta": {
     "mode": "gemini_llm"
   },
-  "duration_s": 0.002,
+  "duration_s": 0.0051,
   "event_count": 5,
   "events": [
     {
@@ -12,7 +12,7 @@
       "name": "[REDACTED]"
     },
     {
-      "t": 0.001,
+      "t": 0.004,
       "kind": "scheduling_result",
       "recommended": true,
       "expedited": false,
@@ -20,18 +20,18 @@
       "specialty": "dermatology"
     },
     {
-      "t": 0.001,
+      "t": 0.004,
       "kind": "recovery",
       "recovered": true,
       "via": "local_slot_fallback"
     },
     {
-      "t": 0.001,
+      "t": 0.004,
       "kind": "scenario",
       "name": "[REDACTED]"
     },
     {
-      "t": 0.001,
+      "t": 0.004,
       "kind": "reflection",
       "verdict": "re_plan",
       "confidence": 0.1,

@@ -44,6 +44,7 @@ Other run options:
 python main.py --list-samples                       # list committed sample intakes
 python main.py --patient SYN-1001 --text "mild cough since yesterday"
 python -m scripts.capture_evidence                  # regenerate all evidence artifacts
+python -m scripts.run_ragas_eval                    # RAGAS-style agentic-RAG quality report
 python -m scripts.run_comparison                    # single-agent vs multi-agent comparison
 streamlit run ui/streamlit_app.py                   # optional UI (routing + memory view)
 ```
@@ -57,10 +58,21 @@ streamlit run ui/streamlit_app.py                   # optional UI (routing + mem
 ```bash
 pytest -q                      # full suite (offline-safe; LLM-only tests auto-skip without a key)
 pytest tests/test_ac07_cross_session_memory.py -q    # e.g. cross-session memory proof
+pytest tests/test_meta_traceability.py -q            # every AC/NFR is referenced + tested
 ```
 
-Every Acceptance Criterion (AC-NN) and NFR maps to a test and/or evidence artifact — see
-[docs/traceability-matrix.md](docs/traceability-matrix.md).
+The suite has two layers: **one test per AC/NFR** (the baseline mapping) plus an **exhaustive layer**
+of `test_deep_*` (multi-case happy/edge/failure/boundary) and `test_meta_*` tests. The meta tests
+assert that every gradeable artifact, doc section, keyword, threshold and the PR-driven git history
+physically exist in the repo — covering both the LLM-judged and the deterministic (presence/threshold)
+rubric parameters. Every Acceptance Criterion (AC-NN) and NFR maps to a test and/or evidence
+artifact — see [docs/traceability-matrix.md](docs/traceability-matrix.md).
+
+> **RAGAS-style RAG evaluation.** `python -m scripts.run_ragas_eval` scores the agentic-RAG tool on
+> context precision/recall, faithfulness and answer relevancy → `evidence/ragas_report.{json,md}`.
+> The `ragas` package hard-depends on a removed `langchain_community` path and is incompatible with the
+> pinned langchain 1.x stack, so the metrics are implemented self-contained on local embeddings (no
+> extra dependency, runs offline).
 
 ## What's inside
 

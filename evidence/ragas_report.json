@@ -1,0 +1,100 @@
+{
+  "description": "AC-11 agentic-RAG quality \u2014 RAGAS-style metrics (self-contained; the ragas package is incompatible with the pinned langchain 1.x stack). Metrics are embedding-based means in [0,1].",
+  "generated_at": "2026-09-12T15:38:21",
+  "mode": "gemini_llm",
+  "aggregate": {
+    "context_precision": 0.4306,
+    "context_recall": 0.6171,
+    "faithfulness": 0.7977,
+    "answer_relevancy": 0.6063,
+    "retrieval_hit_rate": 1.0,
+    "n_items": 5
+  },
+  "items": [
+    {
+      "id": "eval-chest-pain",
+      "question": "How should a patient reporting crushing chest pain radiating to the left arm be triaged?",
+      "retrieved_sources": [
+        "care_pathway_chest_pain.md",
+        "triage_guideline_urgency.md",
+        "care_pathway_dermatology.md"
+      ],
+      "expected_source": "care_pathway_chest_pain.md",
+      "expected_source_retrieved": true,
+      "answer": "Red flags such as chest pain radiating to the arm/jaw, difficulty breathing, or signs of stroke. # Care Pathway: Chest Pain (SYNTHETIC) Chest pain is treated as **emergent** until red flags are excluded.",
+      "answer_mode": "offline_deterministic_fallback",
+      "context_precision": 0.4388,
+      "context_recall": 0.6058,
+      "faithfulness": 0.7193,
+      "answer_relevancy": 0.5914
+    },
+    {
+      "id": "eval-mental-health",
+      "question": "What is the coordination pathway when a patient reports feeling hopeless with thoughts of self-harm?",
+      "retrieved_sources": [
+        "care_pathway_mental_health.md",
+        "triage_guideline_urgency.md",
+        "care_pathway_chest_pain.md"
+      ],
+      "expected_source": "care_pathway_mental_health.md",
+      "expected_source_retrieved": true,
+      "answer": "# Care Pathway: Low Mood / Mental Health (SYNTHETIC) Always screen for self-harm risk first. Any indication of self-harm risk makes the case **urgent** and routes to the mental-health crisis pathway.",
+      "answer_mode": "offline_deterministic_fallback",
+      "context_precision": 0.4299,
+      "context_recall": 0.5265,
+      "faithfulness": 0.8251,
+      "answer_relevancy": 0.5808
+    },
+    {
+      "id": "eval-dermatology",
+      "question": "How is a routine itchy skin rash handled for scheduling and referral?",
+      "retrieved_sources": [
+        "care_pathway_dermatology.md",
+        "triage_guideline_urgency.md",
+        "referral_scope.md"
+      ],
+      "expected_source": "care_pathway_dermatology.md",
+      "expected_source_retrieved": true,
+      "answer": "Isolated stable rashes are **routine** dermatology. # Care Pathway: Rash / Dermatology (SYNTHETIC) Assess for systemic involvement (fever, spreading, blistering, facial swelling, breathing difficulty).",
+      "answer_mode": "offline_deterministic_fallback",
+      "context_precision": 0.436,
+      "context_recall": 0.5287,
+      "faithfulness": 0.8223,
+      "answer_relevancy": 0.5581
+    },
+    {
+      "id": "eval-urgency-bands",
+      "question": "What urgency bands does the triage guideline define and what do they mean?",
+      "retrieved_sources": [
+        "triage_guideline_urgency.md",
+        "care_pathway_dermatology.md",
+        "care_pathway_mental_health.md"
+      ],
+      "expected_source": "triage_guideline_urgency.md",
+      "expected_source_retrieved": true,
+      "answer": "# Triage Urgency Guideline (SYNTHETIC) Urgency levels and their meaning for care coordination: - **emergent**: possible emergency. - **urgent**: needs same-day or next-day attention (e.g., safety concerns, acute worsening).",
+      "answer_mode": "offline_deterministic_fallback",
+      "context_precision": 0.4118,
+      "context_recall": 0.6298,
+      "faithfulness": 0.7507,
+      "answer_relevancy": 0.7131
+    },
+    {
+      "id": "eval-referral-scope",
+      "question": "When must a presenting need be referred outside the clinic's scope?",
+      "retrieved_sources": [
+        "referral_scope.md",
+        "care_pathway_dermatology.md",
+        "triage_guideline_urgency.md"
+      ],
+      "expected_source": "referral_scope.md",
+      "expected_source_retrieved": true,
+      "answer": "# Clinic Referral Scope (SYNTHETIC) In-scope specialties: general practice, cardiology, dermatology, orthopedics, mental health, endocrinology. Needs outside these (e.g., neurosurgery, oncology, transplant) are **out of scope** and must be referred out to an external specialist.",
+      "answer_mode": "offline_deterministic_fallback",
+      "context_precision": 0.4366,
+      "context_recall": 0.7948,
+      "faithfulness": 0.8713,
+      "answer_relevancy": 0.5881
+    }
+  ]
+}
