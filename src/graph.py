@@ -33,8 +33,13 @@ from .tracing import Trace
 
 
 def build_graph(*, checkpointer=None, trace: Trace | None = None,
-                memory: TieredMemory | None = None, mcp_slot_fn=None):
-    """Construct and compile the care-coordination graph."""
+                memory: TieredMemory | None = None, mcp_slot_fn=None,
+                interrupt_before: list[str] | None = None):
+    """Construct and compile the care-coordination graph.
+
+    `interrupt_before` pauses the graph before the named nodes (used to demonstrate pause/resume
+    via the checkpointer, AC-05).
+    """
 
     def intake_node(state: PatientIntakeState) -> dict:
         q = state["quarantined_input"]
@@ -144,7 +149,7 @@ def build_graph(*, checkpointer=None, trace: Trace | None = None,
     g.add_edge("followup", "supervisor")
     g.add_edge("finalize", END)
 
-    return g.compile(checkpointer=checkpointer)
+    return g.compile(checkpointer=checkpointer, interrupt_before=interrupt_before or [])
 
 
 def _summarize_plan(state: PatientIntakeState) -> str:

@@ -1,0 +1,69 @@
+{
+  "description": "AC-10 evidence: agent invoking MCP tools via langchain-mcp-adapters. Tool results are PII-redacted for the committed log (NFR-05).",
+  "generated_at": "2026-09-12T13:36:57",
+  "loaded_tools": [
+    "patient_lookup",
+    "appointment_slots",
+    "care_pathway",
+    "list_intake_notes",
+    "read_intake_note"
+  ],
+  "invocations": [
+    {
+      "tool": "patient_lookup",
+      "server": "clinic",
+      "arguments": {
+        "patient_id": "[PATIENT_ID_REDACTED]"
+      },
+      "result_redacted": [
+        {
+          "patient_id": "[PATIENT_ID_REDACTED]",
+          "name": "[REDACTED]",
+          "dob": "[DOB_REDACTED]",
+          "sex": "F",
+          "known_allergies": [
+            "penicillin"
+          ],
+          "conditions": [
+            "hypertension"
+          ],
+          "medications": [
+            "lisinopril"
+          ],
+          "primary_provider": "Dr. Synthetic One"
+        }
+      ]
+    },
+    {
+      "tool": "appointment_slots",
+      "server": "clinic",
+      "arguments": {
+        "specialty": "cardiology",
+        "urgency": "emergent"
+      },
+      "result_redacted": [
+        {
+          "slot_id": "SLOT-0013",
+          "specialty": "cardiology",
+          "urgency_band": "emergent",
+          "provider": "Dr. Synthetic Cardiology",
+          "when": "2026-09-12T09:00:00"
+        },
+        {
+          "slot_id": "SLOT-0014",
+          "specialty": "cardiology",
+          "urgency_band": "emergent",
+          "provider": "Dr. Synthetic Cardiology",
+          "when": "2026-09-12T13:00:00"
+        },
+        {
+          "slot_id": "SLOT-0015",
+          "specialty": "cardiology",
+          "urgency_band": "emergent",
+          "provider": "Dr. Synthetic Cardiology",
+          "when": "2026-09-12T16:00:00"
+        }
+      ]
+    }
+  ]
+}

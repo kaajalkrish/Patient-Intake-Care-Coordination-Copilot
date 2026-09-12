@@ -1,0 +1,15 @@
+AC-07 CROSS-SESSION MEMORY PERSISTENCE — TEST OUTPUT LOG
+============================================================
+generated_at: 2026-09-12T13:36:53
+
+Session A (write):
+  stored fact for SYN-1001: 'Patient reported an allergy to penicillin during the first visit.'
+  facts in store after write: 1
+  memory object closed and deleted (session ends).
+
+Session B (new object, same on-disk DB = simulated restart):
+  query: 'any known drug allergies?'
+  recalled: ['Patient reported an allergy to penicillin during the first visit.']
+  facts visible in new session: 1
+
+RESULT: PASS — prior-session fact recalled in a new session.

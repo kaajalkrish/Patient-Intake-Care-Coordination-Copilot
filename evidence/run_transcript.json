@@ -1,0 +1,566 @@
+{
+  "run_kind": "multi_agent_run_transcript",
+  "meta": {
+    "mode": "offline_deterministic_fallback"
+  },
+  "duration_s": 29.2853,
+  "event_count": 74,
+  "events": [
+    {
+      "t": 0.001,
+      "kind": "sample_begin",
+      "sample": "emergent_chest_pain"
+    },
+    {
+      "t": 0.01,
+      "kind": "input_quarantined",
+      "injection_flagged": false
+    },
+    {
+      "t": 27.0727,
+      "kind": "intake",
+      "recalled_facts": 3,
+      "injection_flagged": false,
+      "compressed": false
+    },
+    {
+      "t": 27.079,
+      "kind": "supervisor_route",
+      "next": "triage",
+      "reason": "Triage the request first.",
+      "urgency": ""
+    },
+    {
+      "t": 28.8477,
+      "kind": "rag_decision",
+      "agent": "triage",
+      "condition": "chest_pain",
+      "retrieve": true,
+      "method": "heuristic-or-default",
+      "hits": 3
+    },
+    {
+      "t": 28.8497,
+      "kind": "triage_result",
+      "source": "heuristic",
+      "urgency": "emergent",
+      "specialty": "cardiology",
+      "confidence": 0.6
+    },
+    {
+      "t": 28.8517,
+      "kind": "reflection",
+      "verdict": "accept",
+      "confidence": 0.6
+    },
+    {
+      "t": 28.8527,
+      "kind": "supervisor_route",
+      "next": "scheduling",
+      "reason": "Expedited scheduling for high-acuity case.",
+      "urgency": "emergent"
+    },
+    {
+      "t": 28.8557,
+      "kind": "scheduling_result",
+      "recommended": true,
+      "expedited": true,
+      "urgency": "emergent",
+      "specialty": "cardiology"
+    },
+    {
+      "t": 28.8557,
+      "kind": "supervisor_route",
+      "next": "referral",
+      "reason": "Specialty 'cardiology' requires a referral decision.",
+      "urgency": "emergent"
+    },
+    {
+      "t": 28.8567,
+      "kind": "referral_result",
+      "needed": true,
+      "out_of_scope": false,
+      "specialty": "cardiology"
+    },
+    {
+      "t": 28.8567,
+      "kind": "supervisor_route",
+      "next": "followup",
+      "reason": "Set up follow-up/coordination.",
+      "urgency": "emergent"
+    },
+    {
+      "t": 28.8577,
+      "kind": "followup_result",
+      "window": "immediately / same day",
+      "actions": 3
+    },
+    {
+      "t": 28.8587,
+      "kind": "supervisor_route",
+      "next": "finish",
+      "reason": "All required workers complete.",
+      "urgency": "emergent"
+    },
+    {
+      "t": 28.8808,
+      "kind": "finalize",
+      "urgency": "emergent",
+      "has_plan": true
+    },
+    {
+      "t": 28.8854,
+      "kind": "sample_end",
+      "sample": "emergent_chest_pain",
+      "urgency": "emergent",
+      "route": [
+        "supervisor->triage",
+        "supervisor->scheduling",
+        "supervisor->referral",
+        "supervisor->followup",
+        "supervisor->finish"
+      ],
+      "completed": [
+        "triage",
+        "scheduling",
+        "referral",
+        "followup"
+      ]
+    },
+    {
+      "t": 28.8854,
+      "kind": "sample_begin",
+      "sample": "injection_attempt"
+    },
+    {
+      "t": 28.8909,
+      "kind": "input_quarantined",
+      "injection_flagged": true
+    },
+    {
+      "t": 28.9643,
+      "kind": "intake",
+      "recalled_facts": 3,
+      "injection_flagged": true,
+      "compressed": false
+    },
+    {
+      "t": 28.9654,
+      "kind": "supervisor_route",
+      "next": "triage",
+      "reason": "Triage the request first.",
+      "urgency": ""
+    },
+    {
+      "t": 28.9674,
+      "kind": "rag_decision",
+      "agent": "triage",
+      "condition": "general",
+      "retrieve": false,
+      "method": "heuristic",
+      "hits": 0
+    },
+    {
+      "t": 28.9684,
+      "kind": "triage_result",
+      "source": "heuristic",
+      "urgency": "routine",
+      "specialty": "general_practice",
+      "confidence": 0.4
+    },
+    {
+      "t": 28.9694,
+      "kind": "reflection",
+      "verdict": "accept",
+      "confidence": 0.4
+    },
+    {
+      "t": 28.9694,
+      "kind": "supervisor_route",
+      "next": "scheduling",
+      "reason": "Standard scheduling.",
+      "urgency": "routine"
+    },
+    {
+      "t": 28.9717,
+      "kind": "scheduling_result",
+      "recommended": true,
+      "expedited": false,
+      "urgency": "routine",
+      "specialty": "general_practice"
+    },
+    {
+      "t": 28.9728,
+      "kind": "supervisor_route",
+      "next": "followup",
+      "reason": "Set up follow-up/coordination.",
+      "urgency": "routine"
+    },
+    {
+      "t": 28.9737,
+      "kind": "followup_result",
+      "window": "1-2 weeks",
+      "actions": 2
+    },
+    {
+      "t": 28.9747,
+      "kind": "supervisor_route",
+      "next": "finish",
+      "reason": "All required workers complete.",
+      "urgency": "routine"
+    },
+    {
+      "t": 29.0096,
+      "kind": "finalize",
+      "urgency": "routine",
+      "has_plan": true
+    },
+    {
+      "t": 29.0106,
+      "kind": "sample_end",
+      "sample": "injection_attempt",
+      "urgency": "routine",
+      "route": [
+        "supervisor->triage",
+        "supervisor->scheduling",
+        "supervisor->followup",
+        "supervisor->finish"
+      ],
+      "completed": [
+        "triage",
+        "scheduling",
+        "followup"
+      ]
+    },
+    {
+      "t": 29.0116,
+      "kind": "sample_begin",
+      "sample": "routine_rash"
+    },
+    {
+      "t": 29.0157,
+      "kind": "input_quarantined",
+      "injection_flagged": false
+    },
+    {
+      "t": 29.0687,
+      "kind": "intake",
+      "recalled_facts": 3,
+      "injection_flagged": false,
+      "compressed": false
+    },
+    {
+      "t": 29.0697,
+      "kind": "supervisor_route",
+      "next": "triage",
+      "reason": "Triage the request first.",
+      "urgency": ""
+    },
+    {
+      "t": 29.0893,
+      "kind": "rag_decision",
+      "agent": "triage",
+      "condition": "rash",
+      "retrieve": true,
+      "method": "heuristic-or-default",
+      "hits": 3
+    },
+    {
+      "t": 29.0924,
+      "kind": "triage_result",
+      "source": "heuristic",
+      "urgency": "routine",
+      "specialty": "dermatology",
+      "confidence": 0.6
+    },
+    {
+      "t": 29.0953,
+      "kind": "reflection",
+      "verdict": "accept",
+      "confidence": 0.6
+    },
+    {
+      "t": 29.0953,
+      "kind": "supervisor_route",
+      "next": "scheduling",
+      "reason": "Standard scheduling.",
+      "urgency": "routine"
+    },
+    {
+      "t": 29.0978,
+      "kind": "scheduling_result",
+      "recommended": true,
+      "expedited": false,
+      "urgency": "routine",
+      "specialty": "dermatology"
+    },
+    {
+      "t": 29.0988,
+      "kind": "supervisor_route",
+      "next": "referral",
+      "reason": "Specialty 'dermatology' requires a referral decision.",
+      "urgency": "routine"
+    },
+    {
+      "t": 29.0988,
+      "kind": "referral_result",
+      "needed": true,
+      "out_of_scope": false,
+      "specialty": "dermatology"
+    },
+    {
+      "t": 29.0988,
+      "kind": "supervisor_route",
+      "next": "followup",
+      "reason": "Set up follow-up/coordination.",
+      "urgency": "routine"
+    },
+    {
+      "t": 29.1015,
+      "kind": "followup_result",
+      "window": "1-2 weeks",
+      "actions": 3
+    },
+    {
+      "t": 29.1025,
+      "kind": "supervisor_route",
+      "next": "finish",
+      "reason": "All required workers complete.",
+      "urgency": "routine"
+    },
+    {
+      "t": 29.1281,
+      "kind": "finalize",
+      "urgency": "routine",
+      "has_plan": true
+    },
+    {
+      "t": 29.1294,
+      "kind": "sample_end",
+      "sample": "routine_rash",
+      "urgency": "routine",
+      "route": [
+        "supervisor->triage",
+        "supervisor->scheduling",
+        "supervisor->referral",
+        "supervisor->followup",
+        "supervisor->finish"
+      ],
+      "completed": [
+        "triage",
+        "scheduling",
+        "referral",
+        "followup"
+      ]
+    },
+    {
+      "t": 29.1304,
+      "kind": "sample_begin",
+      "sample": "selfcare_cold"
+    },
+    {
+      "t": 29.1324,
+      "kind": "input_quarantined",
+      "injection_flagged": false
+    },
+    {
+      "t": 29.1776,
+      "kind": "intake",
+      "recalled_facts": 3,
+      "injection_flagged": false,
+      "compressed": false
+    },
+    {
+      "t": 29.1786,
+      "kind": "supervisor_route",
+      "next": "triage",
+      "reason": "Triage the request first.",
+      "urgency": ""
+    },
+    {
+      "t": 29.1796,
+      "kind": "rag_decision",
+      "agent": "triage",
+      "condition": "cold_symptoms",
+      "retrieve": false,
+      "method": "heuristic",
+      "hits": 0
+    },
+    {
+      "t": 29.1806,
+      "kind": "triage_result",
+      "source": "heuristic",
+      "urgency": "self_care",
+      "specialty": "general_practice",
+      "confidence": 0.6
+    },
+    {
+      "t": 29.1806,
+      "kind": "reflection",
+      "verdict": "accept",
+      "confidence": 0.6
+    },
+    {
+      "t": 29.1816,
+      "kind": "supervisor_route",
+      "next": "followup",
+      "reason": "Set up follow-up/coordination.",
+      "urgency": "self_care"
+    },
+    {
+      "t": 29.1826,
+      "kind": "followup_result",
+      "window": "only if symptoms worsen or persist beyond 10 days",
+      "actions": 2
+    },
+    {
+      "t": 29.1826,
+      "kind": "supervisor_route",
+      "next": "finish",
+      "reason": "All required workers complete.",
+      "urgency": "self_care"
+    },
+    {
+      "t": 29.2106,
+      "kind": "finalize",
+      "urgency": "self_care",
+      "has_plan": true
+    },
+    {
+      "t": 29.2118,
+      "kind": "sample_end",
+      "sample": "selfcare_cold",
+      "urgency": "self_care",
+      "route": [
+        "supervisor->triage",
+        "supervisor->followup",
+        "supervisor->finish"
+      ],
+      "completed": [
+        "triage",
+        "followup"
+      ]
+    },
+    {
+      "t": 29.2128,
+      "kind": "sample_begin",
+      "sample": "urgent_low_mood"
+    },
+    {
+      "t": 29.2158,
+      "kind": "input_quarantined",
+      "injection_flagged": false
+    },
+    {
+      "t": 29.2314,
+      "kind": "intake",
+      "recalled_facts": 0,
+      "injection_flagged": false,
+      "compressed": false
+    },
+    {
+      "t": 29.2314,
+      "kind": "supervisor_route",
+      "next": "triage",
+      "reason": "Triage the request first.",
+      "urgency": ""
+    },
+    {
+      "t": 29.2534,
+      "kind": "rag_decision",
+      "agent": "triage",
+      "condition": "low_mood",
+      "retrieve": true,
+      "method": "heuristic-or-default",
+      "hits": 3
+    },
+    {
+      "t": 29.2545,
+      "kind": "triage_result",
+      "source": "heuristic",
+      "urgency": "urgent",
+      "specialty": "mental_health",
+      "confidence": 0.6
+    },
+    {
+      "t": 29.2555,
+      "kind": "reflection",
+      "verdict": "accept",
+      "confidence": 0.6
+    },
+    {
+      "t": 29.2565,
+      "kind": "supervisor_route",
+      "next": "scheduling",
+      "reason": "Expedited scheduling for high-acuity case.",
+      "urgency": "urgent"
+    },
+    {
+      "t": 29.2576,
+      "kind": "scheduling_result",
+      "recommended": true,
+      "expedited": true,
+      "urgency": "urgent",
+      "specialty": "mental_health"
+    },
+    {
+      "t": 29.2576,
+      "kind": "supervisor_route",
+      "next": "referral",
+      "reason": "Specialty 'mental_health' requires a referral decision.",
+      "urgency": "urgent"
+    },
+    {
+      "t": 29.2585,
+      "kind": "referral_result",
+      "needed": true,
+      "out_of_scope": false,
+      "specialty": "mental_health"
+    },
+    {
+      "t": 29.2596,
+      "kind": "supervisor_route",
+      "next": "followup",
+      "reason": "Set up follow-up/coordination.",
+      "urgency": "urgent"
+    },
+    {
+      "t": 29.2596,
+      "kind": "followup_result",
+      "window": "24-48 hours",
+      "actions": 3
+    },
+    {
+      "t": 29.2606,
+      "kind": "supervisor_route",
+      "next": "finish",
+      "reason": "All required workers complete.",
+      "urgency": "urgent"
+    },
+    {
+      "t": 29.2829,
+      "kind": "finalize",
+      "urgency": "urgent",
+      "has_plan": true
+    },
+    {
+      "t": 29.2843,
+      "kind": "sample_end",
+      "sample": "urgent_low_mood",
+      "urgency": "urgent",
+      "route": [
+        "supervisor->triage",
+        "supervisor->scheduling",
+        "supervisor->referral",
+        "supervisor->followup",
+        "supervisor->finish"
+      ],
+      "completed": [
+        "triage",
+        "scheduling",
+        "referral",
+        "followup"
+      ]
+    }
+  ]
+}
