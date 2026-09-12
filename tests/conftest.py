@@ -9,7 +9,13 @@ import os
 import sys
 from pathlib import Path
 
-import pytest
+# Force deterministic OFFLINE mode for the whole suite BEFORE src.config is imported, so tests
+# validate the deterministic contract and never flake on LLM variability or rate limits. The live
+# Gemini path is exercised by the app and the evidence-capture scripts, not by unit tests.
+# (load_dotenv uses override=False, so this pre-set empty value wins over any .env key.)
+os.environ["GOOGLE_API_KEY"] = ""
+
+import pytest  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
