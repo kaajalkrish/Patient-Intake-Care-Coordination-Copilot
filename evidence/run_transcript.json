@@ -1,37 +1,37 @@
 {
   "run_kind": "multi_agent_run_transcript",
   "meta": {
-    "mode": "offline_deterministic_fallback"
+    "mode": "gemini_llm"
   },
-  "duration_s": 29.2853,
-  "event_count": 74,
+  "duration_s": 110.9235,
+  "event_count": 90,
   "events": [
     {
-      "t": 0.001,
+      "t": 0.0,
       "kind": "sample_begin",
       "sample": "emergent_chest_pain"
     },
     {
-      "t": 0.01,
+      "t": 0.0076,
       "kind": "input_quarantined",
       "injection_flagged": false
     },
     {
-      "t": 27.0727,
+      "t": 24.9176,
       "kind": "intake",
       "recalled_facts": 3,
       "injection_flagged": false,
       "compressed": false
     },
     {
-      "t": 27.079,
+      "t": 24.9244,
       "kind": "supervisor_route",
       "next": "triage",
       "reason": "Triage the request first.",
       "urgency": ""
     },
     {
-      "t": 28.8477,
+      "t": 26.4835,
       "kind": "rag_decision",
       "agent": "triage",
       "condition": "chest_pain",
@@ -40,28 +40,28 @@
       "hits": 3
     },
     {
-      "t": 28.8497,
+      "t": 53.6973,
       "kind": "triage_result",
-      "source": "heuristic",
+      "source": "llm",
       "urgency": "emergent",
       "specialty": "cardiology",
-      "confidence": 0.6
+      "confidence": 1.0
     },
     {
-      "t": 28.8517,
+      "t": 53.6993,
       "kind": "reflection",
       "verdict": "accept",
-      "confidence": 0.6
+      "confidence": 1.0
     },
     {
-      "t": 28.8527,
+      "t": 53.6993,
       "kind": "supervisor_route",
       "next": "scheduling",
       "reason": "Expedited scheduling for high-acuity case.",
       "urgency": "emergent"
     },
     {
-      "t": 28.8557,
+      "t": 53.7029,
       "kind": "scheduling_result",
       "recommended": true,
       "expedited": true,
@@ -69,47 +69,47 @@
       "specialty": "cardiology"
     },
     {
-      "t": 28.8557,
+      "t": 53.7038,
       "kind": "supervisor_route",
       "next": "referral",
       "reason": "Specialty 'cardiology' requires a referral decision.",
       "urgency": "emergent"
     },
     {
-      "t": 28.8567,
+      "t": 53.7038,
       "kind": "referral_result",
       "needed": true,
       "out_of_scope": false,
       "specialty": "cardiology"
     },
     {
-      "t": 28.8567,
+      "t": 53.7038,
       "kind": "supervisor_route",
       "next": "followup",
       "reason": "Set up follow-up/coordination.",
       "urgency": "emergent"
     },
     {
-      "t": 28.8577,
+      "t": 53.7048,
       "kind": "followup_result",
       "window": "immediately / same day",
       "actions": 3
     },
     {
-      "t": 28.8587,
+      "t": 53.7048,
       "kind": "supervisor_route",
       "next": "finish",
       "reason": "All required workers complete.",
       "urgency": "emergent"
     },
     {
-      "t": 28.8808,
+      "t": 53.7272,
       "kind": "finalize",
       "urgency": "emergent",
       "has_plan": true
     },
     {
-      "t": 28.8854,
+      "t": 53.7301,
       "kind": "sample_end",
       "sample": "emergent_chest_pain",
       "urgency": "emergent",
@@ -128,61 +128,61 @@
       ]
     },
     {
-      "t": 28.8854,
+      "t": 53.7301,
       "kind": "sample_begin",
       "sample": "injection_attempt"
     },
     {
-      "t": 28.8909,
+      "t": 53.7402,
       "kind": "input_quarantined",
       "injection_flagged": true
     },
     {
-      "t": 28.9643,
+      "t": 53.784,
       "kind": "intake",
       "recalled_facts": 3,
       "injection_flagged": true,
       "compressed": false
     },
     {
-      "t": 28.9654,
+      "t": 53.785,
       "kind": "supervisor_route",
       "next": "triage",
       "reason": "Triage the request first.",
       "urgency": ""
     },
     {
-      "t": 28.9674,
+      "t": 72.624,
       "kind": "rag_decision",
       "agent": "triage",
       "condition": "general",
-      "retrieve": false,
-      "method": "heuristic",
-      "hits": 0
+      "retrieve": true,
+      "method": "llm",
+      "hits": 3
     },
     {
-      "t": 28.9684,
+      "t": 77.7436,
       "kind": "triage_result",
-      "source": "heuristic",
+      "source": "llm",
       "urgency": "routine",
       "specialty": "general_practice",
-      "confidence": 0.4
+      "confidence": 0.95
     },
     {
-      "t": 28.9694,
+      "t": 77.7446,
       "kind": "reflection",
       "verdict": "accept",
-      "confidence": 0.4
+      "confidence": 0.95
     },
     {
-      "t": 28.9694,
+      "t": 77.7446,
       "kind": "supervisor_route",
       "next": "scheduling",
       "reason": "Standard scheduling.",
       "urgency": "routine"
     },
     {
-      "t": 28.9717,
+      "t": 77.7456,
       "kind": "scheduling_result",
       "recommended": true,
       "expedited": false,
@@ -190,33 +190,33 @@
       "specialty": "general_practice"
     },
     {
-      "t": 28.9728,
+      "t": 77.7465,
       "kind": "supervisor_route",
       "next": "followup",
       "reason": "Set up follow-up/coordination.",
       "urgency": "routine"
     },
     {
-      "t": 28.9737,
+      "t": 77.7465,
       "kind": "followup_result",
       "window": "1-2 weeks",
       "actions": 2
     },
     {
-      "t": 28.9747,
+      "t": 77.7465,
       "kind": "supervisor_route",
       "next": "finish",
       "reason": "All required workers complete.",
       "urgency": "routine"
     },
     {
-      "t": 29.0096,
+      "t": 77.7654,
       "kind": "finalize",
       "urgency": "routine",
       "has_plan": true
     },
     {
-      "t": 29.0106,
+      "t": 77.7669,
       "kind": "sample_end",
       "sample": "injection_attempt",
       "urgency": "routine",
@@ -233,31 +233,152 @@
       ]
     },
     {
-      "t": 29.0116,
+      "t": 77.7669,
       "kind": "sample_begin",
-      "sample": "routine_rash"
+      "sample": "out_of_scope_oncology"
     },
     {
-      "t": 29.0157,
+      "t": 77.7694,
       "kind": "input_quarantined",
       "injection_flagged": false
     },
     {
-      "t": 29.0687,
+      "t": 77.8009,
       "kind": "intake",
       "recalled_facts": 3,
       "injection_flagged": false,
       "compressed": false
     },
     {
-      "t": 29.0697,
+      "t": 77.8019,
       "kind": "supervisor_route",
       "next": "triage",
       "reason": "Triage the request first.",
       "urgency": ""
     },
     {
-      "t": 29.0893,
+      "t": 79.7501,
+      "kind": "rag_decision",
+      "agent": "triage",
+      "condition": "general",
+      "retrieve": true,
+      "method": "llm",
+      "hits": 3
+    },
+    {
+      "t": 95.6552,
+      "kind": "triage_result",
+      "source": "llm",
+      "urgency": "routine",
+      "specialty": "general_practice",
+      "confidence": 0.95
+    },
+    {
+      "t": 95.6562,
+      "kind": "reflection",
+      "verdict": "accept",
+      "confidence": 0.95
+    },
+    {
+      "t": 95.6562,
+      "kind": "supervisor_route",
+      "next": "scheduling",
+      "reason": "Standard scheduling.",
+      "urgency": "routine"
+    },
+    {
+      "t": 95.6582,
+      "kind": "scheduling_result",
+      "recommended": true,
+      "expedited": false,
+      "urgency": "routine",
+      "specialty": "general_practice"
+    },
+    {
+      "t": 95.6592,
+      "kind": "supervisor_route",
+      "next": "referral",
+      "reason": "Specialty 'general_practice' requires a referral decision.",
+      "urgency": "routine"
+    },
+    {
+      "t": 95.6597,
+      "kind": "referral_result",
+      "needed": true,
+      "out_of_scope": true,
+      "specialty": "general_practice"
+    },
+    {
+      "t": 95.6597,
+      "kind": "supervisor_route",
+      "next": "followup",
+      "reason": "Set up follow-up/coordination.",
+      "urgency": "routine"
+    },
+    {
+      "t": 95.6607,
+      "kind": "followup_result",
+      "window": "1-2 weeks",
+      "actions": 3
+    },
+    {
+      "t": 95.6607,
+      "kind": "supervisor_route",
+      "next": "finish",
+      "reason": "All required workers complete.",
+      "urgency": "routine"
+    },
+    {
+      "t": 95.6847,
+      "kind": "finalize",
+      "urgency": "routine",
+      "has_plan": true
+    },
+    {
+      "t": 95.6857,
+      "kind": "sample_end",
+      "sample": "out_of_scope_oncology",
+      "urgency": "routine",
+      "route": [
+        "supervisor->triage",
+        "supervisor->scheduling",
+        "supervisor->referral",
+        "supervisor->followup",
+        "supervisor->finish"
+      ],
+      "completed": [
+        "triage",
+        "scheduling",
+        "referral",
+        "followup"
+      ]
+    },
+    {
+      "t": 95.6857,
+      "kind": "sample_begin",
+      "sample": "routine_rash"
+    },
+    {
+      "t": 95.6877,
+      "kind": "input_quarantined",
+      "injection_flagged": false
+    },
+    {
+      "t": 95.7513,
+      "kind": "intake",
+      "recalled_facts": 3,
+      "injection_flagged": false,
+      "compressed": false
+    },
+    {
+      "t": 95.7523,
+      "kind": "supervisor_route",
+      "next": "triage",
+      "reason": "Triage the request first.",
+      "urgency": ""
+    },
+    {
+      "t": 95.7633,
       "kind": "rag_decision",
       "agent": "triage",
       "condition": "rash",
@@ -266,28 +387,28 @@
       "hits": 3
     },
     {
-      "t": 29.0924,
+      "t": 99.8038,
       "kind": "triage_result",
-      "source": "heuristic",
+      "source": "llm",
       "urgency": "routine",
       "specialty": "dermatology",
-      "confidence": 0.6
+      "confidence": 0.95
     },
     {
-      "t": 29.0953,
+      "t": 99.8048,
       "kind": "reflection",
       "verdict": "accept",
-      "confidence": 0.6
+      "confidence": 0.95
     },
     {
-      "t": 29.0953,
+      "t": 99.8048,
       "kind": "supervisor_route",
       "next": "scheduling",
       "reason": "Standard scheduling.",
       "urgency": "routine"
     },
     {
-      "t": 29.0978,
+      "t": 99.806,
       "kind": "scheduling_result",
       "recommended": true,
       "expedited": false,
@@ -295,47 +416,47 @@
       "specialty": "dermatology"
     },
     {
-      "t": 29.0988,
+      "t": 99.8068,
       "kind": "supervisor_route",
       "next": "referral",
       "reason": "Specialty 'dermatology' requires a referral decision.",
       "urgency": "routine"
     },
     {
-      "t": 29.0988,
+      "t": 99.8068,
       "kind": "referral_result",
       "needed": true,
       "out_of_scope": false,
       "specialty": "dermatology"
     },
     {
-      "t": 29.0988,
+      "t": 99.8068,
       "kind": "supervisor_route",
       "next": "followup",
       "reason": "Set up follow-up/coordination.",
       "urgency": "routine"
     },
     {
-      "t": 29.1015,
+      "t": 99.8079,
       "kind": "followup_result",
       "window": "1-2 weeks",
       "actions": 3
     },
     {
-      "t": 29.1025,
+      "t": 99.8079,
       "kind": "supervisor_route",
       "next": "finish",
       "reason": "All required workers complete.",
       "urgency": "routine"
     },
     {
-      "t": 29.1281,
+      "t": 99.8279,
       "kind": "finalize",
       "urgency": "routine",
       "has_plan": true
     },
     {
-      "t": 29.1294,
+      "t": 99.8279,
       "kind": "sample_end",
       "sample": "routine_rash",
       "urgency": "routine",
@@ -354,80 +475,80 @@
       ]
     },
     {
-      "t": 29.1304,
+      "t": 99.8291,
       "kind": "sample_begin",
       "sample": "selfcare_cold"
     },
     {
-      "t": 29.1324,
+      "t": 99.8301,
       "kind": "input_quarantined",
       "injection_flagged": false
     },
     {
-      "t": 29.1776,
+      "t": 99.8618,
       "kind": "intake",
       "recalled_facts": 3,
       "injection_flagged": false,
       "compressed": false
     },
     {
-      "t": 29.1786,
+      "t": 99.8628,
       "kind": "supervisor_route",
       "next": "triage",
       "reason": "Triage the request first.",
       "urgency": ""
     },
     {
-      "t": 29.1796,
+      "t": 102.1033,
       "kind": "rag_decision",
       "agent": "triage",
       "condition": "cold_symptoms",
-      "retrieve": false,
-      "method": "heuristic",
-      "hits": 0
+      "retrieve": true,
+      "method": "llm",
+      "hits": 3
     },
     {
-      "t": 29.1806,
+      "t": 107.6669,
       "kind": "triage_result",
-      "source": "heuristic",
+      "source": "llm",
       "urgency": "self_care",
       "specialty": "general_practice",
-      "confidence": 0.6
+      "confidence": 0.95
     },
     {
-      "t": 29.1806,
+      "t": 107.6679,
       "kind": "reflection",
       "verdict": "accept",
-      "confidence": 0.6
+      "confidence": 0.95
     },
     {
-      "t": 29.1816,
+      "t": 107.6689,
       "kind": "supervisor_route",
       "next": "followup",
       "reason": "Set up follow-up/coordination.",
       "urgency": "self_care"
     },
     {
-      "t": 29.1826,
+      "t": 107.6689,
       "kind": "followup_result",
       "window": "only if symptoms worsen or persist beyond 10 days",
       "actions": 2
     },
     {
-      "t": 29.1826,
+      "t": 107.6694,
       "kind": "supervisor_route",
       "next": "finish",
       "reason": "All required workers complete.",
       "urgency": "self_care"
     },
     {
-      "t": 29.2106,
+      "t": 107.687,
       "kind": "finalize",
       "urgency": "self_care",
       "has_plan": true
     },
     {
-      "t": 29.2118,
+      "t": 107.6881,
       "kind": "sample_end",
       "sample": "selfcare_cold",
       "urgency": "self_care",
@@ -442,31 +563,31 @@
       ]
     },
     {
-      "t": 29.2128,
+      "t": 107.6881,
       "kind": "sample_begin",
       "sample": "urgent_low_mood"
     },
     {
-      "t": 29.2158,
+      "t": 107.6901,
       "kind": "input_quarantined",
       "injection_flagged": false
     },
     {
-      "t": 29.2314,
+      "t": 107.7259,
       "kind": "intake",
-      "recalled_facts": 0,
+      "recalled_facts": 3,
       "injection_flagged": false,
       "compressed": false
     },
     {
-      "t": 29.2314,
+      "t": 107.7269,
       "kind": "supervisor_route",
       "next": "triage",
       "reason": "Triage the request first.",
       "urgency": ""
     },
     {
-      "t": 29.2534,
+      "t": 107.7471,
       "kind": "rag_decision",
       "agent": "triage",
       "condition": "low_mood",
@@ -475,28 +596,28 @@
       "hits": 3
     },
     {
-      "t": 29.2545,
+      "t": 110.8711,
       "kind": "triage_result",
-      "source": "heuristic",
+      "source": "llm",
       "urgency": "urgent",
       "specialty": "mental_health",
-      "confidence": 0.6
+      "confidence": 0.95
     },
     {
-      "t": 29.2555,
+      "t": 110.8721,
       "kind": "reflection",
       "verdict": "accept",
-      "confidence": 0.6
+      "confidence": 0.95
     },
     {
-      "t": 29.2565,
+      "t": 110.8731,
       "kind": "supervisor_route",
       "next": "scheduling",
       "reason": "Expedited scheduling for high-acuity case.",
       "urgency": "urgent"
     },
     {
-      "t": 29.2576,
+      "t": 110.8741,
       "kind": "scheduling_result",
       "recommended": true,
       "expedited": true,
@@ -504,47 +625,47 @@
       "specialty": "mental_health"
     },
     {
-      "t": 29.2576,
+      "t": 110.8751,
       "kind": "supervisor_route",
       "next": "referral",
       "reason": "Specialty 'mental_health' requires a referral decision.",
       "urgency": "urgent"
     },
     {
-      "t": 29.2585,
+      "t": 110.8763,
       "kind": "referral_result",
       "needed": true,
       "out_of_scope": false,
       "specialty": "mental_health"
     },
     {
-      "t": 29.2596,
+      "t": 110.8771,
       "kind": "supervisor_route",
       "next": "followup",
       "reason": "Set up follow-up/coordination.",
       "urgency": "urgent"
     },
     {
-      "t": 29.2596,
+      "t": 110.8781,
       "kind": "followup_result",
       "window": "24-48 hours",
       "actions": 3
     },
     {
-      "t": 29.2606,
+      "t": 110.8781,
       "kind": "supervisor_route",
       "next": "finish",
       "reason": "All required workers complete.",
       "urgency": "urgent"
     },
     {
-      "t": 29.2829,
+      "t": 110.9184,
       "kind": "finalize",
       "urgency": "urgent",
       "has_plan": true
     },
     {
-      "t": 29.2843,
+      "t": 110.9199,
       "kind": "sample_end",
       "sample": "urgent_low_mood",
       "urgency": "urgent",

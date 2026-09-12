@@ -21,6 +21,25 @@ class LLMUnavailable(RuntimeError):
     """Raised when the LLM cannot be used (no key, repeated failures)."""
 
 
+def _content_to_text(content) -> str:
+    """Normalize a LangChain message `content` to a plain string.
+
+    langchain-core 1.x returns content as a list of typed blocks
+    (e.g. [{'type': 'text', 'text': '...'}]); older versions returned a str.
+    """
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        parts = []
+        for block in content:
+            if isinstance(block, dict):
+                parts.append(block.get("text", "") or block.get("content", ""))
+            else:
+                parts.append(str(block))
+        return "".join(parts)
+    return str(content)
+
+
 def _build_chat(temperature: float = 0.1):
     if not settings.has_api_key:
         raise LLMUnavailable("GOOGLE_API_KEY is not configured; running in offline/fallback mode.")
@@ -60,7 +79,7 @@ def chat_text(prompt: str, *, temperature: float = 0.1, system: str | None = Non
         messages.append(("system", system))
     messages.append(("human", prompt))
     resp = _with_retries(lambda: chat.invoke(messages))
-    return resp.content if hasattr(resp, "content") else str(resp)
+    return _content_to_text(resp.content) if hasattr(resp, "content") else str(resp)
 
 
 def chat_structured(prompt: str, schema: type[T], *, temperature: float = 0.0,

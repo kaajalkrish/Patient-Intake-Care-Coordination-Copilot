@@ -10,6 +10,17 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator
 
+# The clinic's in-scope specialties. Constraining triage output to this set keeps routing
+# deterministic and prevents the LLM from inventing free-form specialties (e.g. "Emergency Medicine").
+Specialty = Literal[
+    "general_practice",
+    "cardiology",
+    "dermatology",
+    "orthopedics",
+    "mental_health",
+    "endocrinology",
+]
+
 
 class Urgency(str, Enum):
     """Acuity level. Ordered emergent > urgent > routine > self_care."""
@@ -30,9 +41,13 @@ class TriageResult(BaseModel):
     urgency: Urgency
     chief_complaint: str = Field(..., min_length=1, description="Normalized chief complaint")
     recommended_disposition: str = Field(..., min_length=1)
-    specialty: str = Field(
+    specialty: Specialty = Field(
         default="general_practice",
-        description="Care specialty the request maps to (e.g. cardiology).",
+        description="Care specialty the request maps to; MUST be one of the clinic's in-scope values.",
+    )
+    out_of_scope: bool = Field(
+        default=False,
+        description="True if the presenting need is OUTSIDE the clinic's scope (must refer out).",
     )
     red_flags: list[str] = Field(default_factory=list)
     guideline_citations: list[str] = Field(

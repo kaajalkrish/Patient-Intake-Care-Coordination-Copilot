@@ -13,7 +13,14 @@ from ..rag.retriever import care_pathway_lookup
 from ..schemas import TriageResult, Urgency
 from ..state import PatientIntakeState
 from ..tracing import Trace
-from .base import detect_condition, heuristic_urgency, load_pathways, scan_red_flags
+from .base import (
+    IN_SCOPE_SPECIALTIES as _IN_SCOPE,
+    detect_condition,
+    detect_out_of_scope,
+    heuristic_urgency,
+    load_pathways,
+    scan_red_flags,
+)
 
 # Conditions trivial enough to skip guideline retrieval.
 _TRIVIAL = {"cold_symptoms", "general"}
@@ -79,6 +86,9 @@ def triage_agent(state: PatientIntakeState, trace: Trace | None = None) -> dict:
             result.urgency = Urgency.EMERGENT
             result.red_flags = list(set(result.red_flags) | set(red_flags))
         result.guideline_citations = citations or result.guideline_citations
+        # Deterministic out-of-scope override (specialty is constrained to in-scope values).
+        if detect_out_of_scope(text):
+            result.out_of_scope = True
         source = "llm"
     except LLMUnavailable:
         result = _heuristic_triage(text, condition, red_flags, citations)
@@ -113,7 +123,8 @@ def _heuristic_triage(text: str, condition: str, red_flags: list[str],
         urgency=urgency,
         chief_complaint=condition.replace("_", " "),
         recommended_disposition=disposition,
-        specialty=specialty,
+        specialty=specialty if specialty in _IN_SCOPE else "general_practice",
+        out_of_scope=detect_out_of_scope(text),
         red_flags=red_flags,
         guideline_citations=citations,
         confidence=0.6 if condition != "general" else 0.4,

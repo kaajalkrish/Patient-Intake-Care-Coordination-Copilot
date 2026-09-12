@@ -1,14 +1,15 @@
 # Single-Agent vs Multi-Agent Supervisor — Comparison Run
 
-_Generated 2026-09-12T13:35:51_. Same committed samples run through both architectures. See docs/single-vs-multi-decision.md for the rationale.
+_Generated 2026-09-12T13:57:03_. Same committed samples run through both architectures. See docs/single-vs-multi-decision.md for the rationale.
 
 | Sample | Expected | Multi urgency | ✓ | Single urgency | ✓ | Multi lat (s) | Single lat (s) | Supervisor decisions |
 |---|---|---|---|---|---|---|---|---|
-| emergent_chest_pain | emergent | emergent | ✓ | emergent | ✓ | 23.8934 | 0.012 | 5 |
-| injection_attempt | routine | routine | ✓ | routine | ✓ | 0.0594 | 0.0 | 4 |
-| routine_rash | routine | routine | ✓ | routine | ✓ | 0.0621 | 0.0124 | 5 |
-| selfcare_cold | self_care | self_care | ✓ | self_care | ✓ | 0.0544 | 0.0008 | 3 |
-| urgent_low_mood | urgent | urgent | ✓ | urgent | ✓ | 0.0586 | 0.013 | 5 |
+| emergent_chest_pain | emergent | emergent | ✓ | emergent | ✓ | 42.3062 | 7.0235 | 5 |
+| injection_attempt | routine | routine | ✓ | routine | ✓ | 8.3511 | 8.2798 | 4 |
+| out_of_scope_oncology | routine | routine | ✓ | routine | ✓ | 8.2545 | 8.4675 | 5 |
+| routine_rash | routine | routine | ✓ | routine | ✓ | 4.2631 | 4.1207 | 5 |
+| selfcare_cold | self_care | self_care | ✓ | self_care | ✓ | 8.4695 | 8.384 | 3 |
+| urgent_low_mood | urgent | urgent | ✓ | urgent | ✓ | 4.024 | 4.4475 | 5 |
 
 **Routing accuracy:** multi-agent 100% · single-agent 100%
 

@@ -1,9 +1,9 @@
 {
   "run_kind": "reflection_self_healing_trace",
   "meta": {
-    "mode": "offline_deterministic_fallback"
+    "mode": "gemini_llm"
   },
-  "duration_s": 0.0027,
+  "duration_s": 0.001,
   "event_count": 5,
   "events": [
     {
@@ -12,7 +12,7 @@
       "name": "[REDACTED]"
     },
     {
-      "t": 0.0017,
+      "t": 0.001,
       "kind": "scheduling_result",
       "recommended": true,
       "expedited": false,
@@ -20,18 +20,18 @@
       "specialty": "dermatology"
     },
     {
-      "t": 0.0017,
+      "t": 0.001,
       "kind": "recovery",
       "recovered": true,
       "via": "local_slot_fallback"
     },
     {
-      "t": 0.0017,
+      "t": 0.001,
       "kind": "scenario",
       "name": "[REDACTED]"
     },
     {
-      "t": 0.0017,
+      "t": 0.001,
       "kind": "reflection",
       "verdict": "re_plan",
       "confidence": 0.1,

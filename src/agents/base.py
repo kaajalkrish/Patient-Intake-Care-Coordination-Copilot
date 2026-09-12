@@ -76,3 +76,14 @@ IN_SCOPE_SPECIALTIES = {
     "general_practice", "cardiology", "dermatology",
     "orthopedics", "mental_health", "endocrinology",
 }
+
+# Needs beyond the clinic's scope -> must be referred out to an external specialist.
+_OUT_OF_SCOPE_KEYWORDS = [
+    "neurosurg", "oncolog", "cancer", "tumor", "tumour", "transplant",
+    "chemotherapy", "radiation therapy", "neurology",
+]
+
+
+def detect_out_of_scope(text: str) -> bool:
+    t = (text or "").lower()
+    return any(k in t for k in _OUT_OF_SCOPE_KEYWORDS)

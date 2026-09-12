@@ -25,6 +25,7 @@ EXPECTED = {
     "urgent_low_mood": "urgent",
     "selfcare_cold": "self_care",
     "injection_attempt": "routine",  # must NOT be elevated by the injection
+    "out_of_scope_oncology": "routine",  # referred out; urgency itself routine
 }
 
 
