@@ -1,6 +1,6 @@
 {
   "description": "AC-10: agent invoking custom MCP tools via langchain-mcp-adapters (results PII-redacted, NFR-05).",
-  "generated_at": "2026-09-12T13:55:00",
+  "generated_at": "2026-09-12T14:02:42",
   "loaded_tools": [
     "patient_lookup",
     "appointment_slots",
