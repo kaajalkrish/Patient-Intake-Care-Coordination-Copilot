@@ -1,0 +1,77 @@
+{
+  "chest_pain": {
+    "condition": "chest_pain",
+    "default_urgency": "emergent",
+    "specialty": "cardiology",
+    "steps": [
+      "Screen for emergency red flags (crushing pain, radiation to arm/jaw, dyspnea, diaphoresis).",
+      "If red flags present, direct to emergency care immediately \u2014 do NOT schedule routine.",
+      "If no red flags, expedite cardiology evaluation within 24 hours.",
+      "Arrange follow-up ECG review and medication reconciliation."
+    ],
+    "red_flags": [
+      "radiation to arm or jaw",
+      "shortness of breath",
+      "sweating",
+      "syncope"
+    ]
+  },
+  "rash": {
+    "condition": "rash",
+    "default_urgency": "routine",
+    "specialty": "dermatology",
+    "steps": [
+      "Assess for systemic symptoms (fever, spreading, blistering).",
+      "Routine dermatology appointment if localized and stable.",
+      "Advise on symptomatic self-care; escalate if spreading or febrile."
+    ],
+    "red_flags": [
+      "facial swelling",
+      "difficulty breathing",
+      "widespread blistering"
+    ]
+  },
+  "knee_pain": {
+    "condition": "knee_pain",
+    "default_urgency": "routine",
+    "specialty": "orthopedics",
+    "steps": [
+      "Assess mechanism, weight-bearing status, swelling.",
+      "Routine orthopedics referral if chronic/non-traumatic.",
+      "Recommend RICE self-care and follow-up in 2 weeks."
+    ],
+    "red_flags": [
+      "inability to bear weight",
+      "deformity",
+      "hot swollen joint with fever"
+    ]
+  },
+  "low_mood": {
+    "condition": "low_mood",
+    "default_urgency": "urgent",
+    "specialty": "mental_health",
+    "steps": [
+      "Screen for safety / self-harm risk.",
+      "If any self-harm risk, treat as urgent and route to mental-health crisis pathway.",
+      "Otherwise schedule mental-health appointment and provide coordination support."
+    ],
+    "red_flags": [
+      "thoughts of self-harm",
+      "hopelessness with a plan"
+    ]
+  },
+  "cold_symptoms": {
+    "condition": "cold_symptoms",
+    "default_urgency": "self_care",
+    "specialty": "general_practice",
+    "steps": [
+      "Assess duration and red flags (high fever, breathing difficulty).",
+      "Self-care guidance for uncomplicated viral symptoms.",
+      "Advise appointment only if symptoms persist beyond 10 days or worsen."
+    ],
+    "red_flags": [
+      "difficulty breathing",
+      "high persistent fever"
+    ]
+  }
+}

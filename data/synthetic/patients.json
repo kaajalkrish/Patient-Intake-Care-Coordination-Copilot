@@ -1,0 +1,61 @@
+[
+  {
+    "patient_id": "SYN-1001",
+    "name": "Testpatient Alpha",
+    "dob": "1970-01-01",
+    "sex": "F",
+    "known_allergies": [
+      "penicillin"
+    ],
+    "conditions": [
+      "hypertension"
+    ],
+    "medications": [
+      "lisinopril"
+    ],
+    "primary_provider": "Dr. Synthetic One"
+  },
+  {
+    "patient_id": "SYN-1002",
+    "name": "Testpatient Bravo",
+    "dob": "1988-05-05",
+    "sex": "M",
+    "known_allergies": [],
+    "conditions": [
+      "type 2 diabetes"
+    ],
+    "medications": [
+      "metformin"
+    ],
+    "primary_provider": "Dr. Synthetic Two"
+  },
+  {
+    "patient_id": "SYN-1003",
+    "name": "Testpatient Charlie",
+    "dob": "2000-09-09",
+    "sex": "X",
+    "known_allergies": [
+      "latex"
+    ],
+    "conditions": [],
+    "medications": [],
+    "primary_provider": "Dr. Synthetic Three"
+  },
+  {
+    "patient_id": "SYN-1004",
+    "name": "Testpatient Delta",
+    "dob": "1955-12-12",
+    "sex": "F",
+    "known_allergies": [
+      "sulfa"
+    ],
+    "conditions": [
+      "coronary artery disease"
+    ],
+    "medications": [
+      "atorvastatin",
+      "aspirin"
+    ],
+    "primary_provider": "Dr. Synthetic Four"
+  }
+]

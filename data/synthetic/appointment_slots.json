@@ -1,0 +1,506 @@
+[
+  {
+    "slot_id": "SLOT-0001",
+    "specialty": "general_practice",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-12T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0002",
+    "specialty": "general_practice",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-12T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0003",
+    "specialty": "general_practice",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-12T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0004",
+    "specialty": "general_practice",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-13T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0005",
+    "specialty": "general_practice",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-13T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0006",
+    "specialty": "general_practice",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-13T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0007",
+    "specialty": "general_practice",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-19T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0008",
+    "specialty": "general_practice",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-19T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0009",
+    "specialty": "general_practice",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-19T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0010",
+    "specialty": "general_practice",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-42T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0011",
+    "specialty": "general_practice",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-42T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0012",
+    "specialty": "general_practice",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic General Practice",
+    "when": "2026-09-42T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0013",
+    "specialty": "cardiology",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-12T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0014",
+    "specialty": "cardiology",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-12T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0015",
+    "specialty": "cardiology",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-12T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0016",
+    "specialty": "cardiology",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-13T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0017",
+    "specialty": "cardiology",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-13T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0018",
+    "specialty": "cardiology",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-13T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0019",
+    "specialty": "cardiology",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-19T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0020",
+    "specialty": "cardiology",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-19T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0021",
+    "specialty": "cardiology",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-19T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0022",
+    "specialty": "cardiology",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-42T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0023",
+    "specialty": "cardiology",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-42T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0024",
+    "specialty": "cardiology",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Cardiology",
+    "when": "2026-09-42T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0025",
+    "specialty": "dermatology",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-12T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0026",
+    "specialty": "dermatology",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-12T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0027",
+    "specialty": "dermatology",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-12T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0028",
+    "specialty": "dermatology",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-13T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0029",
+    "specialty": "dermatology",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-13T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0030",
+    "specialty": "dermatology",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-13T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0031",
+    "specialty": "dermatology",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-19T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0032",
+    "specialty": "dermatology",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-19T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0033",
+    "specialty": "dermatology",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-19T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0034",
+    "specialty": "dermatology",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-42T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0035",
+    "specialty": "dermatology",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-42T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0036",
+    "specialty": "dermatology",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Dermatology",
+    "when": "2026-09-42T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0037",
+    "specialty": "orthopedics",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-12T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0038",
+    "specialty": "orthopedics",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-12T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0039",
+    "specialty": "orthopedics",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-12T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0040",
+    "specialty": "orthopedics",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-13T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0041",
+    "specialty": "orthopedics",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-13T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0042",
+    "specialty": "orthopedics",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-13T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0043",
+    "specialty": "orthopedics",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-19T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0044",
+    "specialty": "orthopedics",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-19T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0045",
+    "specialty": "orthopedics",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-19T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0046",
+    "specialty": "orthopedics",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-42T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0047",
+    "specialty": "orthopedics",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-42T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0048",
+    "specialty": "orthopedics",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Orthopedics",
+    "when": "2026-09-42T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0049",
+    "specialty": "mental_health",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-12T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0050",
+    "specialty": "mental_health",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-12T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0051",
+    "specialty": "mental_health",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-12T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0052",
+    "specialty": "mental_health",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-13T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0053",
+    "specialty": "mental_health",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-13T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0054",
+    "specialty": "mental_health",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-13T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0055",
+    "specialty": "mental_health",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-19T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0056",
+    "specialty": "mental_health",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-19T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0057",
+    "specialty": "mental_health",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-19T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0058",
+    "specialty": "mental_health",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-42T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0059",
+    "specialty": "mental_health",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-42T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0060",
+    "specialty": "mental_health",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Mental Health",
+    "when": "2026-09-42T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0061",
+    "specialty": "endocrinology",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-12T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0062",
+    "specialty": "endocrinology",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-12T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0063",
+    "specialty": "endocrinology",
+    "urgency_band": "emergent",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-12T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0064",
+    "specialty": "endocrinology",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-13T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0065",
+    "specialty": "endocrinology",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-13T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0066",
+    "specialty": "endocrinology",
+    "urgency_band": "urgent",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-13T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0067",
+    "specialty": "endocrinology",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-19T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0068",
+    "specialty": "endocrinology",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-19T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0069",
+    "specialty": "endocrinology",
+    "urgency_band": "routine",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-19T16:00:00"
+  },
+  {
+    "slot_id": "SLOT-0070",
+    "specialty": "endocrinology",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-42T09:00:00"
+  },
+  {
+    "slot_id": "SLOT-0071",
+    "specialty": "endocrinology",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-42T13:00:00"
+  },
+  {
+    "slot_id": "SLOT-0072",
+    "specialty": "endocrinology",
+    "urgency_band": "self_care",
+    "provider": "Dr. Synthetic Endocrinology",
+    "when": "2026-09-42T16:00:00"
+  }
+]
