@@ -3,7 +3,7 @@
   "meta": {
     "mode": "gemini_llm"
   },
-  "duration_s": 0.001,
+  "duration_s": 0.002,
   "event_count": 5,
   "events": [
     {

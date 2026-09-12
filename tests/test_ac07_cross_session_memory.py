@@ -5,15 +5,14 @@ This test writes its proof to evidence/memory_persistence_log.txt (committed evi
 from __future__ import annotations
 
 import datetime as dt
-from pathlib import Path
 
 from src.memory.tiered_memory import TieredMemory
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-EVIDENCE_LOG = REPO_ROOT / "evidence" / "memory_persistence_log.txt"
-
 
 def test_memory_persists_across_sessions(tmp_path):
+    # Write the proof to a throwaway path; the COMMITTED evidence log is produced by
+    # scripts/capture_evidence.py so the test never clobbers canonical evidence.
+    evidence_log = tmp_path / "memory_persistence_log.txt"
     db = tmp_path / "persist.sqlite"
     pid = "SYN-1001"
     fact = "Patient reported an allergy to penicillin during the first visit."
@@ -35,8 +34,7 @@ def test_memory_persists_across_sessions(tmp_path):
     assert recalled and "penicillin" in recalled[0].lower()
 
     # ---- Commit the proof as evidence. ----
-    EVIDENCE_LOG.parent.mkdir(parents=True, exist_ok=True)
-    with EVIDENCE_LOG.open("w", encoding="utf-8") as f:
+    with evidence_log.open("w", encoding="utf-8") as f:
         f.write("AC-07 CROSS-SESSION MEMORY PERSISTENCE — TEST OUTPUT LOG\n")
         f.write("=" * 60 + "\n")
         f.write(f"generated_at: {dt.datetime.now().isoformat(timespec='seconds')}\n\n")
@@ -49,4 +47,4 @@ def test_memory_persists_across_sessions(tmp_path):
         f.write(f"  recalled: {recalled}\n")
         f.write(f"  facts visible in new session: {count_b}\n\n")
         f.write("RESULT: PASS — prior-session fact recalled in a new session.\n")
-    assert EVIDENCE_LOG.exists()
+    assert evidence_log.exists()

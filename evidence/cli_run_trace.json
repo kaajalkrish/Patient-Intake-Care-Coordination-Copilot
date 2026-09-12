@@ -2,104 +2,104 @@
   "run_kind": "cli_run",
   "meta": {
     "patient_id": "[PATIENT_ID_REDACTED]",
-    "session_id": "sess-oos-001"
+    "session_id": "sess-routine-001"
   },
-  "duration_s": 27.9407,
+  "duration_s": 27.559,
   "event_count": 14,
   "events": [
     {
-      "t": 0.008,
+      "t": 0.005,
       "kind": "input_quarantined",
       "injection_flagged": false
     },
     {
-      "t": 19.9594,
+      "t": 20.4365,
       "kind": "intake",
-      "recalled_facts": 2,
+      "recalled_facts": 3,
       "injection_flagged": false,
       "compressed": false
     },
     {
-      "t": 19.9636,
+      "t": 20.4488,
       "kind": "supervisor_route",
       "next": "triage",
       "reason": "Triage the request first.",
       "urgency": ""
     },
     {
-      "t": 23.9636,
+      "t": 22.2067,
       "kind": "rag_decision",
       "agent": "triage",
-      "condition": "general",
+      "condition": "rash",
       "retrieve": true,
-      "method": "llm",
+      "method": "heuristic-or-default",
       "hits": 3
     },
     {
-      "t": 27.9063,
+      "t": 27.5112,
       "kind": "triage_result",
-      "source": "llm",
+      "source": "heuristic",
       "urgency": "routine",
-      "specialty": "general_practice",
-      "confidence": 0.95
+      "specialty": "dermatology",
+      "confidence": 0.6
     },
     {
-      "t": 27.9089,
+      "t": 27.5142,
       "kind": "reflection",
       "verdict": "accept",
-      "confidence": 0.95
+      "confidence": 0.6
     },
     {
-      "t": 27.91,
+      "t": 27.5153,
       "kind": "supervisor_route",
       "next": "scheduling",
       "reason": "Standard scheduling.",
       "urgency": "routine"
     },
     {
-      "t": 27.9132,
+      "t": 27.5194,
       "kind": "scheduling_result",
       "recommended": true,
       "expedited": false,
       "urgency": "routine",
-      "specialty": "general_practice"
+      "specialty": "dermatology"
     },
     {
-      "t": 27.9142,
+      "t": 27.5204,
       "kind": "supervisor_route",
       "next": "referral",
-      "reason": "Specialty 'general_practice' requires a referral decision.",
+      "reason": "Specialty 'dermatology' requires a referral decision.",
       "urgency": "routine"
     },
     {
-      "t": 27.9152,
+      "t": 27.5214,
       "kind": "referral_result",
       "needed": true,
-      "out_of_scope": true,
-      "specialty": "general_practice"
+      "out_of_scope": false,
+      "specialty": "dermatology"
     },
     {
-      "t": 27.9152,
+      "t": 27.5224,
       "kind": "supervisor_route",
       "next": "followup",
       "reason": "Set up follow-up/coordination.",
       "urgency": "routine"
     },
     {
-      "t": 27.9162,
+      "t": 27.5234,
       "kind": "followup_result",
       "window": "1-2 weeks",
       "actions": 3
     },
     {
-      "t": 27.9172,
+      "t": 27.5244,
       "kind": "supervisor_route",
       "next": "finish",
       "reason": "All required workers complete.",
       "urgency": "routine"
     },
     {
-      "t": 27.9365,
+      "t": 27.5531,
       "kind": "finalize",
       "urgency": "routine",
       "has_plan": true

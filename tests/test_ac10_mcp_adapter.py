@@ -13,7 +13,6 @@ from src.mcp.client import get_mcp_tools
 from src.tracing import redact
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-TRANSCRIPT = REPO_ROOT / "evidence" / "mcp_toolcall_transcript.json"
 
 
 def _redact_mcp_result(result):
@@ -36,7 +35,11 @@ def _redact_mcp_result(result):
     return redact(result)
 
 
-def test_adapter_loads_tools_and_invokes_mcp_tool():
+def test_adapter_loads_tools_and_invokes_mcp_tool(tmp_path):
+    # Committed transcript is produced by scripts/capture_evidence.py; the test writes to a
+    # throwaway path so it never clobbers canonical evidence.
+    transcript = tmp_path / "mcp_toolcall_transcript.json"
+
     async def run():
         tools = await get_mcp_tools()
         by_name = {t.name: t for t in tools}
@@ -53,8 +56,7 @@ def test_adapter_loads_tools_and_invokes_mcp_tool():
     result_text = result if isinstance(result, str) else json.dumps(result, default=str)
     assert "SYN-1001" in result_text  # the raw MCP call really returned this patient's record
 
-    TRANSCRIPT.parent.mkdir(parents=True, exist_ok=True)
-    TRANSCRIPT.write_text(json.dumps({
+    transcript.write_text(json.dumps({
         "description": "AC-10 evidence: agent invoking MCP tools via langchain-mcp-adapters. "
                        "Tool results are PII-redacted for the committed log (NFR-05).",
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
@@ -67,7 +69,7 @@ def test_adapter_loads_tools_and_invokes_mcp_tool():
              "result_redacted": _redact_mcp_result(slots)},
         ],
     }, indent=2, default=str), encoding="utf-8")
-    assert TRANSCRIPT.exists()
+    assert transcript.exists()
 
 
 def test_both_servers_are_integrated():

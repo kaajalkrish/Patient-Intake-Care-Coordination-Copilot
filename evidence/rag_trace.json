@@ -3,7 +3,7 @@
   "meta": {
     "mode": "gemini_llm"
   },
-  "duration_s": 12.4026,
+  "duration_s": 12.8593,
   "event_count": 7,
   "events": [
     {
@@ -12,7 +12,7 @@
       "name": "[REDACTED]"
     },
     {
-      "t": 0.3635,
+      "t": 0.2208,
       "kind": "rag_decision",
       "agent": "triage",
       "condition": "chest_pain",
@@ -21,29 +21,29 @@
       "hits": 3
     },
     {
-      "t": 5.5983,
+      "t": 4.2762,
       "kind": "triage_result",
-      "source": "llm",
+      "source": "heuristic",
       "urgency": "emergent",
       "specialty": "cardiology",
-      "confidence": 1.0
+      "confidence": 0.6
     },
     {
-      "t": 5.5983,
+      "t": 4.2762,
       "kind": "case",
       "name": "[REDACTED]"
     },
     {
-      "t": 7.9896,
+      "t": 8.4621,
       "kind": "rag_decision",
       "agent": "triage",
       "condition": "cold_symptoms",
-      "retrieve": true,
-      "method": "llm",
-      "hits": 3
+      "retrieve": false,
+      "method": "heuristic",
+      "hits": 0
     },
     {
-      "t": 12.3856,
+      "t": 12.8332,
       "kind": "triage_result",
       "source": "heuristic",
       "urgency": "self_care",
@@ -51,7 +51,7 @@
       "confidence": 0.6
     },
     {
-      "t": 12.4026,
+      "t": 12.8593,
       "kind": "rag_retrieval_sample",
       "query": "mental health self-harm triage",
       "passages": [
