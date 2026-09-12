@@ -50,8 +50,9 @@ def _neutralize(text: str) -> str:
     cleaned = text
     for tok in _DANGEROUS_TOKENS:
         cleaned = cleaned.replace(tok, tok.replace("<", "(").replace(">", ")").replace("`", "'"))
-    # Collapse role-marker lines like "system:" / "assistant:" at line starts.
-    cleaned = re.sub(r"(?im)^\s*(system|assistant|user)\s*:", r"[\1]", cleaned)
+    # Neutralize role markers ("system:", "assistant:", "user:") ANYWHERE they appear, so
+    # untrusted text cannot spoof a chat role even mid-line. Safety over fidelity in quarantine.
+    cleaned = re.sub(r"(?i)\b(system|assistant|user)\s*:", r"[\1]", cleaned)
     return cleaned
 
 

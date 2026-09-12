@@ -1,0 +1,41 @@
+{
+  "run_kind": "reflection_self_healing_trace",
+  "meta": {
+    "mode": "offline_deterministic_fallback"
+  },
+  "duration_s": 0.0027,
+  "event_count": 5,
+  "events": [
+    {
+      "t": 0.0,
+      "kind": "scenario",
+      "name": "[REDACTED]"
+    },
+    {
+      "t": 0.0017,
+      "kind": "scheduling_result",
+      "recommended": true,
+      "expedited": false,
+      "urgency": "routine",
+      "specialty": "dermatology"
+    },
+    {
+      "t": 0.0017,
+      "kind": "recovery",
+      "recovered": true,
+      "via": "local_slot_fallback"
+    },
+    {
+      "t": 0.0017,
+      "kind": "scenario",
+      "name": "[REDACTED]"
+    },
+    {
+      "t": 0.0017,
+      "kind": "reflection",
+      "verdict": "re_plan",
+      "confidence": 0.1,
+      "reason": "triage confidence below threshold"
+    }
+  ]
+}

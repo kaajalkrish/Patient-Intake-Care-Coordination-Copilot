@@ -1,0 +1,108 @@
+{
+  "run_kind": "cli_run",
+  "meta": {
+    "patient_id": "[PATIENT_ID_REDACTED]",
+    "session_id": "sess-routine-001"
+  },
+  "duration_s": 17.5378,
+  "event_count": 14,
+  "events": [
+    {
+      "t": 0.0061,
+      "kind": "input_quarantined",
+      "injection_flagged": false
+    },
+    {
+      "t": 16.3934,
+      "kind": "intake",
+      "recalled_facts": 3,
+      "injection_flagged": false,
+      "compressed": false
+    },
+    {
+      "t": 16.3994,
+      "kind": "supervisor_route",
+      "next": "triage",
+      "reason": "Triage the request first.",
+      "urgency": ""
+    },
+    {
+      "t": 17.5008,
+      "kind": "rag_decision",
+      "agent": "triage",
+      "condition": "rash",
+      "retrieve": true,
+      "method": "heuristic-or-default",
+      "hits": 3
+    },
+    {
+      "t": 17.5018,
+      "kind": "triage_result",
+      "source": "heuristic",
+      "urgency": "routine",
+      "specialty": "dermatology",
+      "confidence": 0.6
+    },
+    {
+      "t": 17.5028,
+      "kind": "reflection",
+      "verdict": "accept",
+      "confidence": 0.6
+    },
+    {
+      "t": 17.5038,
+      "kind": "supervisor_route",
+      "next": "scheduling",
+      "reason": "Standard scheduling.",
+      "urgency": "routine"
+    },
+    {
+      "t": 17.5088,
+      "kind": "scheduling_result",
+      "recommended": true,
+      "expedited": false,
+      "urgency": "routine",
+      "specialty": "dermatology"
+    },
+    {
+      "t": 17.5088,
+      "kind": "supervisor_route",
+      "next": "referral",
+      "reason": "Specialty 'dermatology' requires a referral decision.",
+      "urgency": "routine"
+    },
+    {
+      "t": 17.5108,
+      "kind": "referral_result",
+      "needed": true,
+      "out_of_scope": false,
+      "specialty": "dermatology"
+    },
+    {
+      "t": 17.5118,
+      "kind": "supervisor_route",
+      "next": "followup",
+      "reason": "Set up follow-up/coordination.",
+      "urgency": "routine"
+    },
+    {
+      "t": 17.5128,
+      "kind": "followup_result",
+      "window": "1-2 weeks",
+      "actions": 3
+    },
+    {
+      "t": 17.5148,
+      "kind": "supervisor_route",
+      "next": "finish",
+      "reason": "All required workers complete.",
+      "urgency": "routine"
+    },
+    {
+      "t": 17.5338,
+      "kind": "finalize",
+      "urgency": "routine",
+      "has_plan": true
+    }
+  ]
+}
