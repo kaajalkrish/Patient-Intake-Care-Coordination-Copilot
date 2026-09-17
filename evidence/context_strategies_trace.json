@@ -1,0 +1,65 @@
+{
+  "run_kind": "context_strategies_trace",
+  "meta": {
+    "mode": "gemini_llm"
+  },
+  "duration_s": 0.0402,
+  "event_count": 7,
+  "events": [
+    {
+      "t": 0.0152,
+      "kind": "context_strategy",
+      "strategy": "write",
+      "fact_kind": "allergy",
+      "importance": 0.9,
+      "fact_id": 1
+    },
+    {
+      "t": 0.0152,
+      "kind": "context_strategy",
+      "strategy": "isolate",
+      "injection_flagged": true
+    },
+    {
+      "t": 0.0292,
+      "kind": "context_strategy",
+      "strategy": "select",
+      "recalled_facts": 1
+    },
+    {
+      "t": 0.0292,
+      "kind": "context_strategy",
+      "strategy": "compress",
+      "compressed": true,
+      "thread_len": 30
+    },
+    {
+      "t": 0.0292,
+      "kind": "compression_demo",
+      "thread_turns": 30,
+      "thread_chars": 9870,
+      "compressed": true,
+      "summary_preview": "user: Turn 0: discussing the rash history, prior visits, scheduling options, and follow-up coordination in detail. Turn 0: discussing the rash history, prior vi"
+    },
+    {
+      "t": 0.0392,
+      "kind": "context_strategy",
+      "strategy": "write",
+      "fact_kind": "condition",
+      "importance": 0.85,
+      "fact_id": 2
+    },
+    {
+      "t": 0.0402,
+      "kind": "summary",
+      "strategies_fired": [
+        "compress",
+        "isolate",
+        "select",
+        "write"
+      ],
+      "all_four_present": true,
+      "selected_facts": 1
+    }
+  ]
+}

@@ -72,6 +72,20 @@ def answer_relevancy(question: str, answer: str) -> float:
     return round(_clamp01(cosine(embed(question), embed(answer))), 4)
 
 
+def citation_accuracy(cited_sources: list[str], relevant_sources: list[str]) -> float:
+    """Grounding / citation precision (P22): fraction of cited sources that are actually relevant.
+
+    Measures whether the guideline citations an agent attaches to an answer point to the correct
+    source documents (as opposed to plausible-looking but wrong citations). Returns precision in
+    [0, 1]; 0.0 when nothing was cited.
+    """
+    if not cited_sources:
+        return 0.0
+    relevant = set(relevant_sources)
+    correct = sum(1 for s in cited_sources if s in relevant)
+    return round(correct / len(cited_sources), 4)
+
+
 def generate_answer(question: str, contexts: list[str]) -> tuple[str, str]:
     """Produce an answer from the retrieved contexts.
 
@@ -120,6 +134,7 @@ class RagEvalResult:
     context_recall: float
     faithfulness: float
     answer_relevancy: float
+    citation_accuracy: float
 
     def as_dict(self) -> dict:
         return asdict(self)
@@ -133,18 +148,21 @@ def evaluate_item(item: dict, retriever, *, k: int = 3) -> RagEvalResult:
     sources = [h["source"] for h in hits]
     gt = item.get("ground_truth", "")
     answer, mode = generate_answer(question, contexts)
+    expected = item.get("expected_source", "")
     return RagEvalResult(
         id=item["id"],
         question=question,
         retrieved_sources=sources,
-        expected_source=item.get("expected_source", ""),
-        expected_source_retrieved=item.get("expected_source", "") in sources,
+        expected_source=expected,
+        expected_source_retrieved=expected in sources,
         answer=answer,
         answer_mode=mode,
         context_precision=context_precision(question, contexts, gt),
         context_recall=context_recall(contexts, gt),
         faithfulness=faithfulness(answer, contexts),
         answer_relevancy=answer_relevancy(question, answer),
+        # Grounding: is the top-ranked cited source the expected guideline? (P22)
+        citation_accuracy=citation_accuracy(sources[:1], [expected] if expected else []),
     )
 
 
@@ -152,7 +170,8 @@ def aggregate(results: list[RagEvalResult]) -> dict:
     """Mean of each metric across all evaluated items + retrieval hit-rate."""
     if not results:
         return {}
-    keys = ["context_precision", "context_recall", "faithfulness", "answer_relevancy"]
+    keys = ["context_precision", "context_recall", "faithfulness", "answer_relevancy",
+            "citation_accuracy"]
     agg = {k: _mean([getattr(r, k) for r in results]) for k in keys}
     agg["retrieval_hit_rate"] = _mean([1.0 if r.expected_source_retrieved else 0.0 for r in results])
     agg["n_items"] = len(results)

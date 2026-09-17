@@ -1,6 +1,6 @@
 AC-07 CROSS-SESSION MEMORY PERSISTENCE — CAPTURE LOG
 ============================================================
-generated_at: 2026-09-12T15:31:41
+generated_at: 2026-09-17T12:37:56
 mode: gemini_llm
 
 Session A: stored 1 allergy fact for [PATIENT_ID_REDACTED]; count=1; closed.

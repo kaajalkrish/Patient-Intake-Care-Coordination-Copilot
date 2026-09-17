@@ -10,12 +10,15 @@ cross-session tests.
 from __future__ import annotations
 
 import json
+import logging
 import sqlite3
 import time
 from pathlib import Path
 
 from .embeddings import cosine, embed
 from .eviction import select_evictions
+
+log = logging.getLogger("copilot.memory")
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS facts (
@@ -90,6 +93,10 @@ class SemanticMemoryStore:
                 "recall_count": r["recall_count"] + 1,
             })
         self._conn.commit()
+        # Explicit recall-event log so cross-session recall is observable in traces (AC-06/07, P15).
+        log.info("memory.recall: patient=%s query=%r -> %d hit(s) top_score=%s",
+                 patient_id, query[:60], len(results),
+                 results[0]["score"] if results else None)
         return results
 
     def all_facts(self, patient_id: str) -> list[dict]:
@@ -114,6 +121,13 @@ class SemanticMemoryStore:
         for f in to_evict:
             self._conn.execute("DELETE FROM facts WHERE id=?", (f["id"],))
         self._conn.commit()
+        if to_evict:
+            # Explicit eviction log so the importance/TTL/LRU policy is observable (AC-08, P17).
+            reasons = {}
+            for f in to_evict:
+                reasons[f["reason"]] = reasons.get(f["reason"], 0) + 1
+            log.info("memory.evict: patient=%s removed %d fact(s) reasons=%s",
+                     patient_id, len(to_evict), reasons)
         return to_evict
 
     def close(self) -> None:

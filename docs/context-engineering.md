@@ -3,7 +3,12 @@
 **Covers:** Context Engineering rubric category (12) · NFR-03 (quarantine) · NFR-08 (compression) ·
 AC-11 (select via RAG). Each strategy below names the code that implements it and the test that proves it.
 
-The four strategies (per the LangChain/agent context-engineering framing) are mapped explicitly:
+The four strategies (per the LangChain/agent context-engineering framing) are mapped explicitly. Each
+one is exposed as a single **named, importable function** in [`src/context/strategies.py`](../src/context/strategies.py)
+(`write` / `select` / `compress` / `isolate`) that the graph nodes and runner call directly and that
+emits a `context_strategy` trace event — so every invocation is statically traceable and appears in
+evidence ([`evidence/context_strategies_trace.json`](../evidence/context_strategies_trace.json) shows
+all four firing, including real thread compression).
 
 | Strategy | What it means here | Implementation | Test |
 |----------|--------------------|----------------|------|
@@ -36,7 +41,9 @@ The four strategies (per the LangChain/agent context-engineering framing) are ma
 - `summarize_if_needed(messages, threshold)` collapses older turns into a running summary using Gemini
   when the transcript exceeds a token/char threshold, keeping the last N turns verbatim.
 - The compressed summary is stored via the **Write** path so nothing is lost — it is recallable.
-- Applied automatically in the supervisor before dispatch for long multi-turn threads (NFR-08).
+- Invoked as `strategies.compress(...)` in the **intake node** (`src/graph.py`) at the start of every
+  turn, so long multi-turn threads are condensed before dispatch (NFR-08). Summarization logs an INFO
+  line and a `context_strategy` trace event whenever it triggers.
 
 ## 4. Isolate (Context Quarantine) — the security-critical one
 
