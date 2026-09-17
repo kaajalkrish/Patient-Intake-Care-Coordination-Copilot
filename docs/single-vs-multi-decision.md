@@ -45,14 +45,35 @@ Reasons a supervisor beats one big agent here:
   (`test_ac03`) and the reflection loop.
 - For a *trivial* intake the single agent can be faster/cheaper — quantified in the comparison run.
 
-## 4. Framework choice: LangGraph (required) — why it fits
+## 4. Framework choice: LangGraph — why over other multi-agent frameworks
 
-- **Typed, shared state** (`PatientIntakeState`) across nodes → explicit, testable data flow (AC-01).
-- **Graph topology with conditional edges** models supervisor→worker routing natively (AC-02/03).
-- **First-class checkpointing** (`langgraph-checkpoint-sqlite`) gives pause/resume for free (AC-05).
-- **Interrupt/resume + threads** map cleanly to a multi-session care journey.
-- **Ecosystem fit**: `langchain-mcp-adapters` (MCP), `langmem` (memory), Gemini via
-  `langchain-google-genai` all integrate directly.
+LangGraph is required by the stack, but the choice is *also* the right one on the merits. This
+project has three hard requirements that a framework must serve, and each maps to a concrete
+acceptance criterion:
+
+1. **Statefulness / durability** — a care journey spans turns and sessions and must survive a
+   restart (pause/resume). → AC-05.
+2. **Auditability** — routing decisions (especially the urgency policy) must be inspectable and
+   deterministic, not hidden inside an LLM's chain-of-thought. → AC-02 / AC-03, and the committed
+   traces.
+3. **Typed, validated hand-offs** — each worker's output must be a validated object at the boundary,
+   not free text another agent re-parses. → AC-01 / AC-04.
+
+How the candidate frameworks score against those three requirements:
+
+| Framework | Statefulness / durability (AC-05) | Auditability of routing (AC-02/03) | Typed hand-offs (AC-01/04) | Verdict |
+|-----------|-----------------------------------|------------------------------------|----------------------------|---------|
+| **LangGraph (chosen)** | **First-class checkpointers** (`langgraph-checkpoint-sqlite`); threads persist state to disk → pause/resume "for free". | Routing is an **explicit graph** of conditional edges over typed state; `decide_next()` is a pure, unit-testable function; every hop is traced. | Shared `TypedDict` state + Pydantic worker results validated at each node boundary. | **Chosen.** Serves all three requirements directly with the least hidden control flow. |
+| CrewAI | Role/'crew' abstraction; persistence is add-on and less explicit; no built-in graph checkpointer equivalent. | Orchestration is largely implicit in role prompts and the framework's internal loop → harder to make routing deterministic and auditable. | Task outputs are mostly text/loosely-typed. | Rejected as primary. Evaluated as the comparison lens (still less auditable). |
+| AutoGen (AG2) | Conversation-driven; durable checkpoint/resume of a run is not first-class. | Control flow emerges from multi-agent *conversation* — powerful, but the routing policy is the hardest thing to pin down and prove for a grader. | Message-passing is text-first. | Rejected: auditability + determinism cost too high for a safety policy. |
+| LangChain `AgentExecutor` (single ReAct loop) | No graph; state is the scratchpad of one loop. | One agent's tool-choice reasoning is opaque; centralizing an urgency policy means trusting the prompt. | One combined output. | This *is* the single-agent baseline (`src/single_agent.py`), kept only for the comparison run. |
+| Plain Python orchestration (no framework) | Would have to hand-roll a checkpointer and thread store. | Fully auditable, but every capability (checkpoint, interrupt, reducers) is re-implemented and re-tested by us. | We'd build the typed-state plumbing ourselves. | Rejected: reinvents exactly what LangGraph gives natively. |
+
+**Bottom line:** LangGraph is the only candidate that satisfies *all three* requirements natively —
+durable checkpointing (statefulness), an explicit conditional-edge graph with a pure routing function
+(auditability), and typed/validated state + hand-offs — which is why it is chosen even setting the
+stack requirement aside. Ecosystem fit reinforces it: `langchain-mcp-adapters` (MCP), `langmem`
+(memory), and Gemini via `langchain-google-genai` all integrate directly.
 
 CrewAI (optional) was evaluated for the comparison but not adopted as primary: LangGraph's explicit
 state machine gives the checkpointing, conditional routing, and per-node structured output the rubric

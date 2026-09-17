@@ -42,6 +42,8 @@ Other run options:
 
 ```bash
 python main.py --list-samples                       # list committed sample intakes
+python main.py --show-graph                          # print the multi-agent graph topology
+python main.py --sample routine_rash --verbose       # + INFO logs for context/memory strategies
 python main.py --patient SYN-1001 --text "mild cough since yesterday"
 python -m scripts.capture_evidence                  # regenerate all evidence artifacts
 python -m scripts.run_ragas_eval                    # RAGAS-style agentic-RAG quality report
@@ -95,6 +97,7 @@ artifact — see [docs/traceability-matrix.md](docs/traceability-matrix.md).
 - [Context engineering](docs/context-engineering.md) · [Memory design](docs/memory-design.md)
 - [Integration decision (MCP vs API vs DB vs A2A)](docs/integration-decision.md)
 - [Traceability matrix](docs/traceability-matrix.md)
+- [Advisor remediation checklist](docs/advisor-remediation-checklist.md)
 
 ## Rules honored
 

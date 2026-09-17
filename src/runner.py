@@ -9,7 +9,7 @@ import uuid
 from pathlib import Path
 
 from .config import settings
-from .context.quarantine import quarantine
+from .context import strategies
 from .graph import build_graph, make_sqlite_checkpointer
 from .memory.tiered_memory import TieredMemory
 from .state import new_state
@@ -36,7 +36,8 @@ def run_intake(
     owns_memory = memory is None
     memory = memory or TieredMemory()
 
-    q = quarantine(text)
+    # ISOLATE strategy (P12/NFR-03): quarantine untrusted patient free-text before anything else.
+    q = strategies.isolate(text, trace)
     trace.event("input_quarantined", injection_flagged=q["injection_flagged"])
 
     checkpointer = None
